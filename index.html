@@ -5,28 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemnath | Portfolio</title>
+    <meta name="description" content="Hemnath's personal portfolio — B.Tech AI & Data Science Student.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
+    <!-- Holographic Particle Canvas -->
+    <canvas id="holo-particles"></canvas>
+
+    <!-- Data Stream Background -->
+    <div class="data-stream-bg"></div>
+
     <header>
-        <div class="logo">HEM<span>NATH</span></div>
+        <a href="index.html" class="logo">HEM<span>NATH</span></a>
         <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#activities">Activities</a>
+            <a href="index.html" class="active">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="certifications.html">Certifications</a>
+            <a href="activities.html">Activities</a>
         </nav>
     </header>
 
     <section id="about" class="hero-section">
+        <div class="scan-line-overlay"></div>
         <div class="hero-container">
             <div class="hero-text">
-                <span class="badge">Welcome to my Spotlight</span>
+                <span class="badge">&#9670; System Online &#9670;</span>
                 <h1>Hi, I'm <span class="highlight">Hemnath</span></h1>
-                <h3>B.Tech AI & Data Science Student</h3>
+                <h3>B.Tech AI &amp; Data Science Student</h3>
                 <p class="college">JNN Institute of Engineering • 2nd Year</p>
 
                 <div class="stats-box">
@@ -42,64 +55,29 @@
                 </p>
 
                 <div class="social-links">
-                    <a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" class="social-btn github">
+                    <a href="https://github.com/Hems2150J" target="_blank" class="social-btn github">
                         <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank"
-                        class="social-btn linkedin">
+                    <a href="www.linkedin.com/in/hemnath-nandakumar" target="_blank" class="social-btn linkedin">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
                 </div>
             </div>
 
             <div class="hero-image">
-                <div class="image-wrapper">
-                    <img src="profile pic.jpeg" alt="Hemnath">
+                <div class="holo-frame">
+                    <!-- Corner data markers -->
+                    <div class="frame-corner"></div>
+                    <div class="frame-corner"></div>
+                    <div class="frame-corner"></div>
+                    <div class="frame-corner"></div>
+                    <!-- Floating data tags -->
+                    <span class="holo-data-tag">PROFILE::ACTIVE</span>
+                    <span class="holo-data-tag">ID::VERIFIED</span>
+                    <div class="image-wrapper">
+                        <img src="profile pic.jpeg" alt="Hemnath">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills-section">
-        <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
-        <div class="skills-grid">
-            <div class="skill-card"><i class="fab fa-python blue"></i> <span>Python</span></div>
-            <div class="skill-card"><i class="fas fa-brain purple"></i> <span>Machine Learning</span></div>
-            <div class="skill-card"><i class="fas fa-database green"></i> <span>Data Analytics</span></div>
-            <div class="skill-card"><i class="fab fa-html5 orange"></i> <span>HTML5 & CSS3</span></div>
-            <div class="skill-card"><i class="fab fa-git-alt red"></i> <span>Git / Version Control</span></div>
-            <div class="skill-card"><i class="fas fa-code teal"></i> <span>Data Structures</span></div>
-        </div>
-    </section>
-
-    <section id="certifications" class="cert-section">
-        <h2 class="section-title">My <span class="highlight">Certifications</span></h2>
-        <div class="cert-grid">
-            <div class="cert-card">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Artificial Intelligence Foundations</h3>
-                <p>Issued by: Coursera / NPTEL (Example)</p>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Data Science & Analytics Core</h3>
-                <p>Issued by: Google / IBM (Example)</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="activities" class="activities-section">
-        <h2 class="section-title">Other <span class="highlight">Activities</span></h2>
-        <div class="activities-container">
-            <div class="activity-box">
-                <h3><i class="fas fa-gamepad"></i> Creative Animation & Design</h3>
-                <p>Interested in editing, rendering interactive elements, and mixing technical logic with visual design
-                    storytelling.</p>
-            </div>
-            <div class="activity-box">
-                <h3><i class="fas fa-users"></i> Tech Community & Hackathons</h3>
-                <p>Enthusiastic participant in college technical symposiums, coding sprints, and collaborative peer
-                    learning circles.</p>
             </div>
         </div>
     </section>
@@ -108,6 +86,7 @@
         <p>&copy; 2026 Hemnath. Built with code via Antigravity IDE.</p>
     </footer>
 
+    <script src="holo-effects.js"></script>
 </body>
 
 </html>
