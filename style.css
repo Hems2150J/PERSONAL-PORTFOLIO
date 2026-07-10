@@ -1020,3 +1020,310 @@ footer::before {
 .holo-visible {
     animation: fade-in-up 0.8s ease forwards;
 }
+
+/* ============================================================
+   SKILL PROGRESS BARS
+   ============================================================ */
+.skill-progress-container {
+    width: 100%;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.skill-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 242, 254, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    position: relative;
+}
+
+.skill-progress-fill {
+    height: 100%;
+    width: 0; /* Animated dynamically by Intersection Observer / JS */
+    background: var(--gradient-holo);
+    box-shadow: 0 0 8px var(--holo-cyan);
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+.skill-progress-percent {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    color: var(--holo-cyan);
+    float: right;
+    margin-top: -18px;
+    text-shadow: 0 0 5px var(--holo-cyan);
+}
+
+/* ============================================================
+   CERTIFICATE PREVIEWS
+   ============================================================ */
+.cert-image-wrapper {
+    width: 100%;
+    height: 170px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--glass-border);
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(3, 5, 16, 0.8);
+}
+
+.cert-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.8) saturate(0.9);
+}
+
+.cert-card:hover .cert-image-wrapper img {
+    transform: scale(1.06);
+    filter: brightness(1) saturate(1);
+}
+
+/* ============================================================
+   HOLOGRAPHIC DETAIL MODAL
+   ============================================================ */
+.holo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 5, 16, 0.82);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.holo-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.holo-modal-container {
+    width: 90%;
+    max-width: 650px;
+    background: var(--glass-bg-solid);
+    border: 1px solid var(--glass-border-bright);
+    border-radius: 12px;
+    padding: 35px 40px;
+    box-shadow: var(--glow-lg);
+    position: relative;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    animation: holo-flicker 12s ease-in-out infinite;
+}
+
+.holo-modal.active .holo-modal-container {
+    transform: scale(1) translateY(0);
+}
+
+.holo-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.holo-modal-close:hover {
+    border-color: var(--holo-cyan);
+    color: var(--holo-cyan);
+    text-shadow: var(--text-glow);
+    box-shadow: var(--glow-sm);
+}
+
+/* Corner indicators in modal */
+.holo-modal-container .frame-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--holo-cyan);
+    opacity: 0.6;
+}
+.holo-modal-container .frame-corner:nth-child(1) { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.holo-modal-container .frame-corner:nth-child(2) { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.holo-modal-container .frame-corner:nth-child(3) { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.holo-modal-container .frame-corner:nth-child(4) { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+.holo-modal-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.holo-modal-header i {
+    font-size: 1.8rem;
+    color: var(--holo-cyan);
+    filter: drop-shadow(0 0 8px var(--holo-cyan));
+}
+
+.holo-modal-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--text-bright);
+    text-shadow: var(--text-glow);
+}
+
+.holo-modal-subtitle {
+    color: var(--holo-blue);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.holo-modal-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-main);
+}
+
+.holo-modal-body p {
+    margin-bottom: 15px;
+}
+
+.holo-modal-bullets {
+    margin: 15px 0;
+    padding-left: 5px;
+    list-style-type: none;
+}
+
+.holo-modal-bullets li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    color: var(--text-muted);
+}
+
+.holo-modal-bullets li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--holo-cyan);
+    font-size: 0.7rem;
+    text-shadow: 0 0 4px var(--holo-cyan);
+}
+
+.holo-modal-footer {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 242, 254, 0.15);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.holo-modal-btn {
+    background: var(--gradient-holo);
+    color: var(--bg-void);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--glow-md);
+    transition: all 0.3s ease;
+}
+
+.holo-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-lg);
+    filter: brightness(1.1);
+}
+
+.modal-detail-img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border-bright);
+    margin-bottom: 20px;
+    box-shadow: var(--glow-sm);
+}
+
+.modal-subskills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.modal-subskill-badge {
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    color: var(--holo-cyan);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Modal Skill Progress animation indicator */
+.modal-progress-wrapper {
+    margin: 20px 0;
+    background: rgba(5, 15, 40, 0.4);
+    border: 1px solid var(--glass-border);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.modal-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    color: var(--text-bright);
+}
+
+.modal-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 242, 254, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.modal-progress-fill {
+    height: 100%;
+    width: 0; /* Animated on modal open */
+    background: var(--gradient-holo);
+    box-shadow: 0 0 10px var(--holo-cyan);
+    border-radius: 4px;
+    transition: width 1.2s ease-out;
+}

@@ -176,8 +176,36 @@
     }
 
     // ── INTERSECTION OBSERVER — FADE IN ──
+    // ── INTERSECTION OBSERVER — FADE IN & PROGRESS BARS ──
     function initScrollAnimations() {
         const elements = document.querySelectorAll('.skill-card, .cert-card, .activity-box, .stat-item, .section-title');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('header nav a');
+
+        // Observe section entry to highlight correct nav link
+        if (sections.length && navLinks.length) {
+            const sectionObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            navLinks.forEach((link) => {
+                                if (link.getAttribute('href') === `#${id}`) {
+                                    link.classList.add('active');
+                                } else {
+                                    link.classList.remove('active');
+                                }
+                            });
+                        }
+                    });
+                },
+                {
+                    threshold: 0.25,
+                    rootMargin: '-20% 0px -40% 0px',
+                }
+            );
+            sections.forEach((sec) => sectionObserver.observe(sec));
+        }
 
         if (!elements.length) return;
 
@@ -192,6 +220,15 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.remove('holo-hidden');
                         entry.target.classList.add('holo-visible');
+                        
+                        // Animate skill progress bar on scroll entry
+                        if (entry.target.classList.contains('skill-card')) {
+                            const fill = entry.target.querySelector('.skill-progress-fill');
+                            if (fill) {
+                                fill.style.width = fill.getAttribute('data-target-width');
+                            }
+                        }
+                        
                         observer.unobserve(entry.target);
                     }
                 });
@@ -205,6 +242,160 @@
         elements.forEach((el) => observer.observe(el));
     }
 
+    // ── DETAIL MODAL SYSTEM ──
+    function initDetailModal() {
+        const modal = document.getElementById('detail-modal');
+        if (!modal) return;
+
+        const closeBtn = document.getElementById('modal-close');
+        const mIcon = document.getElementById('modal-icon');
+        const mTitle = document.getElementById('modal-title');
+        const mSubtitle = document.getElementById('modal-subtitle');
+        const mDescription = document.getElementById('modal-description');
+        const mImageContainer = document.getElementById('modal-image-container');
+        const mImage = document.getElementById('modal-image');
+        const mProgressContainer = document.getElementById('modal-progress-container');
+        const mProgressPercent = document.getElementById('modal-progress-percent');
+        const mProgressFill = document.getElementById('modal-progress-fill');
+        const mSubskillsContainer = document.getElementById('modal-subskills-container');
+        const mSubskills = document.getElementById('modal-subskills');
+        const mBullets = document.getElementById('modal-bullets');
+        const mActionBtn = document.getElementById('modal-action-btn');
+
+        const triggerCards = document.querySelectorAll('.skill-card, .cert-card, .activity-box');
+
+        function openModal(card) {
+            const type = card.getAttribute('data-type');
+            const title = card.getAttribute('data-title');
+            const details = card.getAttribute('data-details') || '';
+            const iconClass = card.getAttribute('data-icon');
+
+            // Set general modal fields
+            mTitle.textContent = title;
+            mDescription.textContent = details;
+            
+            // Set icon class
+            mIcon.className = iconClass || 'fas fa-info-circle';
+
+            // Reset sub-containers
+            mImageContainer.style.display = 'none';
+            mProgressContainer.style.display = 'none';
+            mSubskillsContainer.style.display = 'none';
+            mBullets.style.display = 'none';
+            mActionBtn.style.display = 'none';
+            mSubtitle.textContent = '';
+            mBullets.innerHTML = '';
+            mSubskills.innerHTML = '';
+
+            if (type === 'skill') {
+                mSubtitle.textContent = 'Technical Skill';
+                const percent = card.getAttribute('data-percent');
+                const subskillsAttr = card.getAttribute('data-subskills');
+
+                // Skill progress bars
+                mProgressContainer.style.display = 'block';
+                mProgressPercent.textContent = percent + '%';
+                mProgressFill.style.width = '0';
+                
+                // Animate progress fill inside modal after slight delay
+                setTimeout(() => {
+                    mProgressFill.style.width = percent + '%';
+                }, 100);
+
+                // Subskills badges
+                if (subskillsAttr) {
+                    mSubskillsContainer.style.display = 'block';
+                    const list = subskillsAttr.split(',');
+                    list.forEach((item) => {
+                        const badge = document.createElement('span');
+                        badge.className = 'modal-subskill-badge';
+                        badge.textContent = item.trim();
+                        mSubskills.appendChild(badge);
+                    });
+                }
+            } else if (type === 'cert') {
+                const subtitle = card.getAttribute('data-subtitle');
+                const imagePath = card.getAttribute('data-image');
+                const pdfPath = card.getAttribute('data-pdf');
+                const bulletsAttr = card.getAttribute('data-bullets');
+
+                mSubtitle.textContent = subtitle || 'Certification';
+
+                // Display certificate image
+                if (imagePath) {
+                    mImageContainer.style.display = 'block';
+                    mImage.src = imagePath;
+                    mImage.alt = title;
+                }
+
+                // Add bullets
+                if (bulletsAttr) {
+                    mBullets.style.display = 'block';
+                    const list = bulletsAttr.split(';');
+                    list.forEach((item) => {
+                        if (item.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = item.trim();
+                            mBullets.appendChild(li);
+                        }
+                    });
+                }
+
+                // Display action button for PDF
+                if (pdfPath) {
+                    mActionBtn.style.display = 'inline-flex';
+                    mActionBtn.href = pdfPath;
+                }
+            } else if (type === 'activity') {
+                const bulletsAttr = card.getAttribute('data-bullets');
+                mSubtitle.textContent = 'Extracurricular / Activity';
+
+                // Add bullets
+                if (bulletsAttr) {
+                    mBullets.style.display = 'block';
+                    const list = bulletsAttr.split(';');
+                    list.forEach((item) => {
+                        if (item.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = item.trim();
+                            mBullets.appendChild(li);
+                        }
+                    });
+                }
+            }
+
+            // Open Modal with active transition
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Add event listeners to cards
+        triggerCards.forEach((card) => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                openModal(card);
+            });
+        });
+
+        // Close events
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
+
     // ── INIT ──
     function init() {
         // Respect reduced motion preference
@@ -216,6 +407,7 @@
         initDataStream();
         initParallax();
         initScrollAnimations();
+        initDetailModal();
     }
 
     // Run when DOM is ready
