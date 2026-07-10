@@ -8,12 +8,12 @@
     // ── CONFIGURATION ──
     const CONFIG = {
         particles: {
-            count: 55,
-            maxSpeed: 0.4,
-            maxSize: 2.2,
-            minSize: 0.5,
-            connectionDistance: 140,
-            connectionOpacity: 0.15,
+            count: 75, // Increased density of stars
+            maxSpeed: 0.25, // Slower, calmer drift for a cosmic feel
+            maxSize: 4.0, // Maximum outer size of stars
+            minSize: 1.0, // Minimum outer size of stars
+            connectionDistance: 110, // Max distance to connect stars in constellations
+            connectionOpacity: 0.08, // Subtle connection line opacity
             colors: ['rgba(0, 242, 254,', 'rgba(79, 172, 254,', 'rgba(176, 107, 255,'],
         },
         dataStream: {
@@ -46,7 +46,29 @@
         resize();
         window.addEventListener('resize', resize);
 
-        // Create particles
+        // Helper to draw a 4-pointed star
+        function drawStar4(x, y, size, angle) {
+            ctx.beginPath();
+            for (let i = 0; i < 4; i++) {
+                const a1 = angle + (i * Math.PI / 2);
+                const a2 = angle + (i * Math.PI / 2) + Math.PI / 4;
+                
+                const x1 = x + Math.cos(a1) * size;
+                const y1 = y + Math.sin(a1) * size;
+                const x2 = x + Math.cos(a2) * (size * 0.25);
+                const y2 = y + Math.sin(a2) * (size * 0.25);
+                
+                if (i === 0) {
+                    ctx.moveTo(x1, y1);
+                } else {
+                    ctx.lineTo(x1, y1);
+                }
+                ctx.lineTo(x2, y2);
+            }
+            ctx.closePath();
+        }
+
+        // Create star particles
         for (let i = 0; i < CONFIG.particles.count; i++) {
             const colorBase = CONFIG.particles.colors[Math.floor(Math.random() * CONFIG.particles.colors.length)];
             particles.push({
@@ -56,9 +78,11 @@
                 vy: (Math.random() - 0.5) * CONFIG.particles.maxSpeed,
                 size: CONFIG.particles.minSize + Math.random() * (CONFIG.particles.maxSize - CONFIG.particles.minSize),
                 color: colorBase,
-                alpha: 0.3 + Math.random() * 0.5,
-                pulseSpeed: 0.005 + Math.random() * 0.015,
+                alpha: 0.2 + Math.random() * 0.6,
+                pulseSpeed: 0.01 + Math.random() * 0.03, // Faster speeds for noticeable twinkling
                 pulsePhase: Math.random() * Math.PI * 2,
+                angle: Math.random() * Math.PI * 2,
+                rotationSpeed: (Math.random() - 0.5) * 0.01 // Slow rotation of stars
             });
         }
 
@@ -66,7 +90,7 @@
             ctx.clearRect(0, 0, width, height);
             const time = Date.now() * 0.001;
 
-            // Draw connections
+            // Draw connections (constellations)
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -76,7 +100,7 @@
                     if (dist < CONFIG.particles.connectionDistance) {
                         const opacity = (1 - dist / CONFIG.particles.connectionDistance) * CONFIG.particles.connectionOpacity;
                         ctx.strokeStyle = `rgba(0, 242, 254, ${opacity})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.lineWidth = 0.4;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -85,11 +109,14 @@
                 }
             }
 
-            // Draw particles
+            // Draw star particles
             for (const p of particles) {
                 // Update position
                 p.x += p.vx;
                 p.y += p.vy;
+                
+                // Update rotation angle
+                p.angle += p.rotationSpeed;
 
                 // Wrap around edges
                 if (p.x < 0) p.x = width;
@@ -97,18 +124,18 @@
                 if (p.y < 0) p.y = height;
                 if (p.y > height) p.y = 0;
 
-                // Pulsing alpha
-                const pulseAlpha = p.alpha + Math.sin(time * p.pulseSpeed * 60 + p.pulsePhase) * 0.15;
+                // Twinkling alpha calculation
+                const pulseAlpha = Math.max(0.05, p.alpha + Math.sin(time * p.pulseSpeed * 60 + p.pulsePhase) * 0.35);
 
-                // Draw glow
+                // Draw outer star glow
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+                drawStar4(p.x, p.y, p.size * 2.5, p.angle);
                 ctx.fillStyle = `${p.color} ${pulseAlpha * 0.15})`;
                 ctx.fill();
 
-                // Draw core
+                // Draw core star
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                drawStar4(p.x, p.y, p.size, p.angle);
                 ctx.fillStyle = `${p.color} ${pulseAlpha})`;
                 ctx.fill();
             }
