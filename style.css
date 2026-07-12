@@ -470,6 +470,10 @@ nav a.active::after {
     border-color: rgba(0, 119, 181, 0.4);
 }
 
+.email {
+    border-color: rgba(0, 242, 254, 0.3);
+}
+
 .social-btn:hover {
     transform: translateY(-3px);
     box-shadow: var(--glow-md);
