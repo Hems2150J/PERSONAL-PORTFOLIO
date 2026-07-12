@@ -167,7 +167,7 @@
        Mouse-based 3D perspective tilt on cards
     ───────────────────────────────────────────────────────────── */
     function initCardTilt() {
-        const cards = document.querySelectorAll('.skill-card, .cert-card, .activity-box, .stat-item');
+        const cards = document.querySelectorAll('.skill-card, .cert-card, .activity-box, .stat-item, .skill-expanded-card, .cert-detail-card, .activity-bar');
 
         cards.forEach((card) => {
             // Enable 3D transform context
@@ -269,7 +269,7 @@
        Social & modal buttons attract to cursor
     ───────────────────────────────────────────────────────────── */
     function initMagneticButtons() {
-        const magnets = document.querySelectorAll('.social-btn, .holo-modal-btn, .holo-modal-close');
+        const magnets = document.querySelectorAll('.social-btn, .holo-modal-btn, .holo-modal-close, .back-btn, .view-more-btn');
 
         magnets.forEach((btn) => {
             btn.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease';
@@ -493,7 +493,7 @@
        Icons do a full 3D Y-axis flip on hover 
     ───────────────────────────────────────────────────────────── */
     function initIconSpin() {
-        const icons = document.querySelectorAll('.skill-card i, .activity-box h3 i');
+        const icons = document.querySelectorAll('.skill-card i, .activity-box h3 i, .skill-expanded-card i, .activity-bar i');
 
         icons.forEach((icon) => {
             icon.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), filter 0.3s ease';

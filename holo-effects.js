@@ -165,7 +165,7 @@
         // Interactive mouse click game logic
         document.addEventListener('click', (e) => {
             // Ignore clicks on active elements like buttons, navs, modals, headers, etc.
-            if (e.target.closest('a, button, nav, .skill-card, .cert-card, .activity-box, .holo-modal, header, .game-hud')) {
+            if (e.target.closest('a, button, nav, .skill-card, .cert-card, .activity-box, .holo-modal, header, .game-hud, .skill-expanded-card, .cert-detail-card, .activity-bar, .terminal-prompt-line, .detail-page-header')) {
                 return;
             }
 

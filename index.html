@@ -40,207 +40,889 @@
     <div class="data-stream-bg"></div>
 
     <header>
-        <a href="#about" class="logo">HEM<span>NATH</span></a>
+        <a href="#" class="logo" data-page="home">HEM<span>NATH</span></a>
         <nav>
-            <a href="#about" class="active">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#activities">Activities</a>
+            <a href="#" data-page="home" class="active">Home</a>
+            <a href="#" data-page="skills">Skills</a>
+            <a href="#" data-page="certs">Certifications</a>
+            <a href="#" data-page="activities">Activities</a>
         </nav>
     </header>
 
-    <section id="about" class="hero-section">
-        <div class="scan-line-overlay"></div>
-        <div class="hero-container">
-            <div class="hero-text">
-                <span class="badge">&#9670; System Online &#9670;</span>
-                <h1>Hi, I'm <span class="highlight">Hemnath</span></h1>
-                <h3>B.Tech AI &amp; Data Science Student</h3>
-                <p class="college">JNN Institute of Engineering • 2nd Year</p>
+    <!-- ══════════════════════════════════════════════════
+         PAGE CONTAINER
+    ══════════════════════════════════════════════════ -->
+    <div id="page-container">
 
-                <div class="stats-box">
-                    <div class="stat-item">
-                        <span class="stat-num">8.2</span>
-                        <span class="stat-label">1st Year CGPA</span>
+        <!-- ═══════════════════════════════════════════
+             PAGE 1 — HOME
+             Shows hero + skills preview + certs preview + activities preview
+        ═══════════════════════════════════════════ -->
+        <div class="page active" id="page-home">
+
+            <!-- HERO SECTION -->
+            <section id="about" class="hero-section">
+                <div class="scan-line-overlay"></div>
+                <div class="hero-container">
+                    <div class="hero-text">
+                        <span class="badge">&#9670; System Online &#9670;</span>
+                        <h1>Hi, I'm <span class="highlight">Hemnath</span></h1>
+                        <h3>B.Tech AI &amp; Data Science Student</h3>
+                        <p class="college">JNN Institute of Engineering • 2nd Year</p>
+
+                        <div class="stats-box">
+                            <div class="stat-item">
+                                <span class="stat-num">8.2</span>
+                                <span class="stat-label">1st Year CGPA</span>
+                            </div>
+                        </div>
+
+                        <p class="description">
+                            Passionate about building intelligent models, parsing complex data, and crafting creative digital
+                            experiences. Actively seeking opportunities to learn and innovate in AI/ML engineering.
+                        </p>
+
+                        <div class="social-links">
+                            <a href="https://github.com/Hems2150J" target="_blank" class="social-btn github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/hemnath-nandakumar" target="_blank" class="social-btn linkedin">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <div class="holo-frame">
+                            <div class="frame-corner"></div>
+                            <div class="frame-corner"></div>
+                            <div class="frame-corner"></div>
+                            <div class="frame-corner"></div>
+                            <span class="holo-data-tag">PROFILE::ACTIVE</span>
+                            <span class="holo-data-tag">ID::VERIFIED</span>
+                            <div class="image-wrapper">
+                                <img src="profile pic.jpeg" alt="Hemnath">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HOME: SKILLS PREVIEW -->
+            <section class="skills-section home-preview-section">
+                <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
+                <div class="skills-grid">
+                    <div class="skill-card" data-type="skill" data-title="Python" data-percent="90"
+                        data-subskills="Scripting &amp; Automation,Data Manipulation,Web Scraping,API Integration"
+                        data-icon="fab fa-python blue"
+                        data-details="Proficient in writing clean, PEP 8 compliant, and production-grade Python. Leveraged daily for building ETL data pipelines, processing large scientific datasets, writing automation scripts, and prototyping machine learning models. Adept in OOP principles, design patterns, and asynchronous programming in Python."
+                        data-bullets="Developed robust web scraping systems with BeautifulSoup and Selenium to extract unstructured data;Built REST APIs using Flask and FastAPI to serve predictive machine learning models;Automated daily data backup and migration tasks for cloud environments;Optimized computational bottlenecks in numerical scripts using vectorized NumPy operations">
+                        <i class="fab fa-python blue"></i>
+                        <span>Python</span>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-percent">90%</div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress-fill" data-target-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-type="skill" data-title="Machine Learning" data-percent="80"
+                        data-subskills="Supervised Learning,Unsupervised Learning,Model Tuning,Scikit-learn"
+                        data-icon="fas fa-brain purple"
+                        data-details="Strong grasp of supervised and unsupervised learning algorithms, statistical modeling, and model evaluation metrics. Skilled in feature engineering, hyperparameter tuning (GridSearch, Optuna), and handling data imbalances. Experienced in applying ML to solve regression, classification, and clustering problems."
+                        data-bullets="Trained and evaluated complex models like XGBoost, Random Forests, and Support Vector Machines;Implemented custom preprocessing pipelines using Scikit-Learn for normalization, encoding, and imputation;Utilized Principal Component Analysis (PCA) for dimensionality reduction of high-dimensional datasets;Conducted rigorous cross-validation and error analysis to prevent overfitting and improve generalization">
+                        <i class="fas fa-brain purple"></i>
+                        <span>Machine Learning</span>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-percent">80%</div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress-fill" data-target-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-type="skill" data-title="Data Analytics" data-percent="85"
+                        data-subskills="Exploratory Data Analysis,Pandas &amp; NumPy,Matplotlib &amp; Seaborn,SQL Queries"
+                        data-icon="fas fa-database green"
+                        data-details="Adept at translating raw, messy datasets into structured tables, interactive dashboards, and actionable business intelligence. Specialized in exploratory data analysis (EDA), pattern recognition, and statistical testing (t-tests, ANOVA) to back business hypotheses with concrete data proofs."
+                        data-bullets="Manipulated and aggregated multi-gigabyte datasets using Pandas, NumPy, and Polars;Created visually compelling charts and distribution plots using Matplotlib, Seaborn, and Plotly;Wrote complex SQL queries involving window functions, CTEs, and index optimization for database retrieval;Formulated correlation matrices and hypothesis tests to identify key drivers of user engagement">
+                        <i class="fas fa-database green"></i>
+                        <span>Data Analytics</span>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-percent">85%</div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress-fill" data-target-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-type="skill" data-title="HTML5 &amp; CSS3" data-percent="85"
+                        data-subskills="Responsive Layouts,Flexbox &amp; CSS Grid,Animations &amp; Transitions,Glassmorphism"
+                        data-icon="fab fa-html5 orange"
+                        data-details="Creating responsive, accessible, and fast-loading web interfaces. Expertise in responsive layouts using Flexbox and CSS Grid, and custom design systems. Passionate about glassmorphism, responsive micro-animations, and CSS variables for modular styling."
+                        data-bullets="Developed mobile-first responsive layouts with clean, semantic HTML5 structure for SEO;Designed custom visual themes with smooth cubic-bezier transitions and hover animations;Created high-tech glassmorphism effects with backdrop-filters and semi-transparent borders;Optimized stylesheet loading and asset compression for high PageSpeed scoring">
+                        <i class="fab fa-html5 orange"></i>
+                        <span>HTML5 &amp; CSS3</span>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-percent">85%</div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress-fill" data-target-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-type="skill" data-title="Git / Version Control" data-percent="80"
+                        data-subskills="Branching &amp; Merging,Commit Workflows,GitHub Collaboration,Pull Requests"
+                        data-icon="fab fa-git-alt red"
+                        data-details="Proficient in collaborative development using Git and GitHub. Experienced with branching models (Git Flow), resolving merge conflicts, and maintaining clean commit histories. Familiar with Git hooks, pull request workflows, and repository management."
+                        data-bullets="Collaborated on multi-developer projects using feature branches, pull requests, and peer code reviews;Managed complex merge conflicts and rebasing strategies to maintain a clean git commit timeline;Automated linting and test runs using pre-commit hooks and GitHub Actions workflows;Configured custom repository settings, secrets, and environment variables for deployment keys">
+                        <i class="fab fa-git-alt red"></i>
+                        <span>Git / Version Control</span>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-percent">80%</div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress-fill" data-target-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-type="skill" data-title="Data Structures" data-percent="75"
+                        data-subskills="Time/Space Complexity,Arrays &amp; Lists,Sorting Algorithms,Stacks &amp; Queues"
+                        data-icon="fas fa-code teal"
+                        data-details="Solid theoretical and practical understanding of fundamental computer science algorithms and data structures. Skilled in analyzing time and space complexity using Big-O notation, and optimizing algorithms for maximum efficiency and execution speed."
+                        data-bullets="Implemented and manipulated core structures: Linked Lists, Binary Trees, Heaps, and Hash Tables;Solved complex algorithmic problems utilizing Dynamic Programming, BFS, DFS, and recursion;Analyzed code blocks using Big-O notation to identify and optimize quadratic time bottlenecks;Implemented custom sorting and searching algorithms tailored to unique dataset constraints">
+                        <i class="fas fa-code teal"></i>
+                        <span>Data Structures</span>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-percent">75%</div>
+                            <div class="skill-progress-bar">
+                                <div class="skill-progress-fill" data-target-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-more-container">
+                    <button class="view-more-btn" data-page="skills">
+                        <i class="fas fa-microchip"></i> <span>VIEW FULL SKILLS MATRIX</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- HOME: CERTIFICATIONS PREVIEW -->
+            <section class="cert-section home-preview-section">
+                <h2 class="section-title">My <span class="highlight">Certifications</span></h2>
+                <div class="cert-grid">
+                    <div class="cert-card" data-type="cert" data-title="Artificial Intelligence Foundations"
+                        data-subtitle="Issued by: HCL &amp; GUVI" data-image="CERTIFICATES/cert_guvi_ai.png"
+                        data-pdf="CERTIFICATES/HCL GUVI Certification AI.pdf" data-icon="fas fa-certificate"
+                        data-details="A specialized national initiative certification validating foundations in Artificial Intelligence, machine learning workflows, and cloud cognitive services."
+                        data-bullets="Programmed AI pipelines in Python;Learned key concepts of computer vision and natural language processing;Built simple prediction models on GUVI IDE;Supported by HCL engineering mentors">
+                        <div class="cert-image-wrapper">
+                            <img src="CERTIFICATES/cert_guvi_ai.png" alt="HCL GUVI AI Certification">
+                        </div>
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <h3>Artificial Intelligence Foundations</h3>
+                        <p>Issued by: HCL &amp; GUVI</p>
+                    </div>
+                    <div class="cert-card" data-type="cert" data-title="Technical Training Certification"
+                        data-subtitle="Issued by: HCL &amp; GUVI" data-image="CERTIFICATES/cert_guvi_tech.png"
+                        data-pdf="CERTIFICATES/HCL GUVI Certification - 6hDbBZT68177G74280 (1) (1).pdf"
+                        data-icon="fas fa-certificate"
+                        data-details="Technical training course focused on core software engineering practices, programming design patterns, and structured data handling."
+                        data-bullets="Developed algorithmic problem-solving skills;Mastered data structures implementation;Verified software development practices;Completed hands-on projects">
+                        <div class="cert-image-wrapper">
+                            <img src="CERTIFICATES/cert_guvi_tech.png" alt="HCL GUVI Technical Certification">
+                        </div>
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <h3>Data Science &amp; Analytics Core</h3>
+                        <p>Issued by: HCL &amp; GUVI</p>
+                    </div>
+                    <div class="cert-card" data-type="cert" data-title="Python &amp; Data Science Specialization"
+                        data-subtitle="Issued by: Coursera / Partner University"
+                        data-image="CERTIFICATES/cert_coursera.png"
+                        data-pdf="CERTIFICATES/certificate-47uctx25fnoi-1781717276.pdf" data-icon="fas fa-certificate"
+                        data-details="Multi-course specialization detailing Python programming, data retrieval, and data visualization."
+                        data-bullets="Parsed web data using BeautifulSoup and JSON libraries;Wrote custom SQL scripts to manage sqlite databases;Handled data cleaning and visualization tasks;Completed capstone projects">
+                        <div class="cert-image-wrapper">
+                            <img src="CERTIFICATES/cert_coursera.png" alt="Coursera Python Specialization">
+                        </div>
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <h3>Python Programming Specialization</h3>
+                        <p>Issued by: Coursera</p>
+                    </div>
+                    <div class="cert-card" data-type="cert" data-title="Lead School Achievement Certification"
+                        data-subtitle="Issued by: Lead School" data-image="CERTIFICATES/cert_ls.png"
+                        data-pdf="CERTIFICATES/LS CERTIFICATE.pdf" data-icon="fas fa-certificate"
+                        data-details="Certification honoring excellence in soft skills, communication proficiency, and team coordination."
+                        data-bullets="Completed leadership workshops;Participated in team building exercises;Enhanced public speaking and presentation skills;Verified professional ethics">
+                        <div class="cert-image-wrapper">
+                            <img src="CERTIFICATES/cert_ls.png" alt="Lead School Certificate">
+                        </div>
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <h3>Lead School Achievement</h3>
+                        <p>Issued by: Lead School</p>
+                    </div>
+                    <div class="cert-card" data-type="cert" data-title="Academic Excellence &amp; Department Honors"
+                        data-subtitle="Issued by: JNN Institute of Engineering"
+                        data-image="CERTIFICATES/cert_general.png" data-pdf="CERTIFICATES/CERTIFICATE.pdf"
+                        data-icon="fas fa-certificate"
+                        data-details="Awarded for maintaining high academic standards and actively contributing to institutional technical workshops and symposiums."
+                        data-bullets="Maintained strong academic GPA of 8.2;Participated in departmental technical symposia;Contributed to research project forums;Evaluated on hands-on practical labs">
+                        <div class="cert-image-wrapper">
+                            <img src="CERTIFICATES/cert_general.png" alt="Academic Excellence Certificate">
+                        </div>
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <h3>Academic &amp; Technical Achievement</h3>
+                        <p>Issued by: JNN Institute</p>
+                    </div>
+                </div>
+                <div class="view-more-container">
+                    <button class="view-more-btn" data-page="certs">
+                        <i class="fas fa-archive"></i> <span>ACCESS FULL CERT ARCHIVE</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- HOME: ACTIVITIES PREVIEW -->
+            <section class="activities-section home-preview-section">
+                <h2 class="section-title">Other <span class="highlight">Activities</span></h2>
+                <div class="activities-container">
+                    <div class="activity-box" data-type="activity" data-title="Creative Animation &amp; Design"
+                        data-icon="fas fa-gamepad"
+                        data-details="Passionate about combining scientific backend structures with visually striking front-end assets. Skilled in designing visual aids, custom themes, and rendering interactive canvases. Exploring WebGL interfaces and video production suites to create engaging tech stories."
+                        data-bullets="Designed brand assets, vector graphics, and promotional posters for college tech symposiums;Figma prototyping for clean user flows, wireframes, and sci-fi aesthetic interface mockups;Rendered 3D objects, logo animations, and tech teasers inside After Effects and Premiere Pro;Developed interactive 2D Canvas systems and started experimenting with Three.js WebGL scenes">
+                        <h3><i class="fas fa-gamepad"></i> Creative Animation &amp; Design</h3>
+                        <p>Interested in editing, rendering interactive elements, and mixing technical logic with visual design storytelling.</p>
+                    </div>
+                    <div class="activity-box" data-type="activity" data-title="Tech Community &amp; Hackathons"
+                        data-icon="fas fa-users"
+                        data-details="Active leader and participant in engineering communities. Committed to collaborating with peers in high-pressure hackathons, organizing tech events, and mentoring junior students in programming fundamentals."
+                        data-bullets="Led a 3-member team to build a smart-campus IoT prototype during a 24-hour regional hackathon;Participated in competitive programming contests on HackerRank and LeetCode representing JNN;Organized weekly peer study groups covering Python programming and Machine Learning foundations;Volunteered as a student coordinator for the annual Department of Computer Science Symposium">
+                        <h3><i class="fas fa-users"></i> Tech Community &amp; Hackathons</h3>
+                        <p>Enthusiastic participant in college technical symposiums, coding sprints, and collaborative peer learning circles.</p>
+                    </div>
+                    <div class="activity-box" data-type="activity" data-title="AI Research &amp; Open Source Projects"
+                        data-icon="fas fa-brain"
+                        data-details="Dedicated to tracking the frontier of Artificial Intelligence and deep learning. Actively experimenting with local neural network configurations, contributing documentation edits to open-source libraries, and documenting learning milestones."
+                        data-bullets="Developed and published toy AI scripts, neural network tests, and custom utility scripts on GitHub;Maintained exhaustive technical documentation, markdown READMEs, and wiki guides for project portfolios;Contributed documentation patches and code fixes to open-source repositories;Follows latest research from top venues (arXiv, NeurIPS) on LLMs, transformers, and model tuning">
+                        <h3><i class="fas fa-brain"></i> AI Research &amp; Open Source</h3>
+                        <p>Fascinated by neural networks, model optimization, and committing clean documentation / bug-fixes to open source code bases.</p>
+                    </div>
+                </div>
+                <div class="view-more-container">
+                    <button class="view-more-btn" data-page="activities">
+                        <i class="fas fa-terminal"></i> <span>LOAD FULL ACTIVITY LOG</span>
+                    </button>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 Hemnath. Built with code via Antigravity IDE.</p>
+            </footer>
+
+        </div><!-- /page-home -->
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE 2 — SKILLS DETAIL
+             Full expanded skill cards with all detail visible
+        ═══════════════════════════════════════════ -->
+        <div class="page" id="page-skills">
+            <section class="detail-page-section">
+
+                <div class="detail-page-header">
+                    <button class="back-btn" data-page="home">
+                        <i class="fas fa-chevron-left"></i> BACK
+                    </button>
+                    <div class="detail-title-block">
+                        <h2 class="section-title no-margin">Technical <span class="highlight">Skills</span></h2>
+                        <p class="detail-subtitle">SKILLS_MATRIX :: 6 Core Modules Active</p>
                     </div>
                 </div>
 
-                <p class="description">
-                    Passionate about building intelligent models, parsing complex data, and crafting creative digital
-                    experiences. Actively seeking opportunities to learn and innovate in AI/ML engineering.
-                </p>
+                <div class="skills-expanded-grid">
 
-                <div class="social-links">
-                    <a href="https://github.com/Hems2150J" target="_blank" class="social-btn github">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/hemnath-nandakumar" target="_blank" class="social-btn linkedin">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-            </div>
+                    <!-- Python -->
+                    <div class="skill-expanded-card">
+                        <div class="sec-top">
+                            <div class="sec-icon-wrap">
+                                <i class="fab fa-python blue sec-icon"></i>
+                            </div>
+                            <div class="sec-meta">
+                                <h3 class="sec-name">Python</h3>
+                                <div class="sec-tags">
+                                    <span>Scripting &amp; Automation</span>
+                                    <span>Data Manipulation</span>
+                                    <span>Web Scraping</span>
+                                    <span>API Integration</span>
+                                </div>
+                            </div>
+                            <div class="sec-percent-wrap">
+                                <div class="sec-pct-label">90%</div>
+                                <div class="sec-progress-bar">
+                                    <div class="skill-progress-fill" data-target-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sec-desc">Proficient in writing clean, PEP 8 compliant, and production-grade Python. Leveraged daily for building ETL data pipelines, processing large scientific datasets, writing automation scripts, and prototyping machine learning models. Adept in OOP principles, design patterns, and asynchronous programming in Python.</p>
+                        <ul class="sec-bullets">
+                            <li>Developed robust web scraping systems with BeautifulSoup and Selenium to extract unstructured data</li>
+                            <li>Built REST APIs using Flask and FastAPI to serve predictive machine learning models</li>
+                            <li>Automated daily data backup and migration tasks for cloud environments</li>
+                            <li>Optimized computational bottlenecks in numerical scripts using vectorized NumPy operations</li>
+                        </ul>
+                    </div>
 
-            <div class="hero-image">
-                <div class="holo-frame">
-                    <!-- Corner data markers -->
-                    <div class="frame-corner"></div>
-                    <div class="frame-corner"></div>
-                    <div class="frame-corner"></div>
-                    <div class="frame-corner"></div>
-                    <!-- Floating data tags -->
-                    <span class="holo-data-tag">PROFILE::ACTIVE</span>
-                    <span class="holo-data-tag">ID::VERIFIED</span>
-                    <div class="image-wrapper">
-                        <img src="profile pic.jpeg" alt="Hemnath">
+                    <!-- Machine Learning -->
+                    <div class="skill-expanded-card">
+                        <div class="sec-top">
+                            <div class="sec-icon-wrap">
+                                <i class="fas fa-brain purple sec-icon"></i>
+                            </div>
+                            <div class="sec-meta">
+                                <h3 class="sec-name">Machine Learning</h3>
+                                <div class="sec-tags">
+                                    <span>Supervised Learning</span>
+                                    <span>Unsupervised Learning</span>
+                                    <span>Model Tuning</span>
+                                    <span>Scikit-learn</span>
+                                </div>
+                            </div>
+                            <div class="sec-percent-wrap">
+                                <div class="sec-pct-label">80%</div>
+                                <div class="sec-progress-bar">
+                                    <div class="skill-progress-fill" data-target-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sec-desc">Strong grasp of supervised and unsupervised learning algorithms, statistical modeling, and model evaluation metrics. Skilled in feature engineering, hyperparameter tuning (GridSearch, Optuna), and handling data imbalances. Experienced in applying ML to solve regression, classification, and clustering problems.</p>
+                        <ul class="sec-bullets">
+                            <li>Trained and evaluated complex models like XGBoost, Random Forests, and Support Vector Machines</li>
+                            <li>Implemented custom preprocessing pipelines using Scikit-Learn for normalization, encoding, and imputation</li>
+                            <li>Utilized Principal Component Analysis (PCA) for dimensionality reduction of high-dimensional datasets</li>
+                            <li>Conducted rigorous cross-validation and error analysis to prevent overfitting and improve generalization</li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- TECHNICAL SKILLS SECTION -->
-    <section id="skills" class="skills-section">
-        <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
-        <div class="skills-grid">
-            <div class="skill-card" data-type="skill" data-title="Python" data-percent="90" data-subskills="Scripting &amp; Automation,Data Manipulation,Web Scraping,API Integration" data-icon="fab fa-python blue" data-details="Proficient in writing clean, PEP 8 compliant, and production-grade Python. Leveraged daily for building ETL data pipelines, processing large scientific datasets, writing automation scripts, and prototyping machine learning models. Adept in OOP principles, design patterns, and asynchronous programming in Python." data-bullets="Developed robust web scraping systems with BeautifulSoup and Selenium to extract unstructured data;Built REST APIs using Flask and FastAPI to serve predictive machine learning models;Automated daily data backup and migration tasks for cloud environments;Optimized computational bottlenecks in numerical scripts using vectorized NumPy operations">
-                <i class="fab fa-python blue"></i> 
-                <span>Python</span>
-                <div class="skill-progress-container">
-                    <div class="skill-progress-percent">90%</div>
-                    <div class="skill-progress-bar">
-                        <div class="skill-progress-fill" data-target-width="90%"></div>
+                    <!-- Data Analytics -->
+                    <div class="skill-expanded-card">
+                        <div class="sec-top">
+                            <div class="sec-icon-wrap">
+                                <i class="fas fa-database green sec-icon"></i>
+                            </div>
+                            <div class="sec-meta">
+                                <h3 class="sec-name">Data Analytics</h3>
+                                <div class="sec-tags">
+                                    <span>Exploratory Data Analysis</span>
+                                    <span>Pandas &amp; NumPy</span>
+                                    <span>Matplotlib &amp; Seaborn</span>
+                                    <span>SQL Queries</span>
+                                </div>
+                            </div>
+                            <div class="sec-percent-wrap">
+                                <div class="sec-pct-label">85%</div>
+                                <div class="sec-progress-bar">
+                                    <div class="skill-progress-fill" data-target-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sec-desc">Adept at translating raw, messy datasets into structured tables, interactive dashboards, and actionable business intelligence. Specialized in exploratory data analysis (EDA), pattern recognition, and statistical testing (t-tests, ANOVA) to back business hypotheses with concrete data proofs.</p>
+                        <ul class="sec-bullets">
+                            <li>Manipulated and aggregated multi-gigabyte datasets using Pandas, NumPy, and Polars</li>
+                            <li>Created visually compelling charts and distribution plots using Matplotlib, Seaborn, and Plotly</li>
+                            <li>Wrote complex SQL queries involving window functions, CTEs, and index optimization for database retrieval</li>
+                            <li>Formulated correlation matrices and hypothesis tests to identify key drivers of user engagement</li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-            <div class="skill-card" data-type="skill" data-title="Machine Learning" data-percent="80" data-subskills="Supervised Learning,Unsupervised Learning,Model Tuning,Scikit-learn" data-icon="fas fa-brain purple" data-details="Strong grasp of supervised and unsupervised learning algorithms, statistical modeling, and model evaluation metrics. Skilled in feature engineering, hyperparameter tuning (GridSearch, Optuna), and handling data imbalances. Experienced in applying ML to solve regression, classification, and clustering problems." data-bullets="Trained and evaluated complex models like XGBoost, Random Forests, and Support Vector Machines;Implemented custom preprocessing pipelines using Scikit-Learn for normalization, encoding, and imputation;Utilized Principal Component Analysis (PCA) for dimensionality reduction of high-dimensional datasets;Conducted rigorous cross-validation and error analysis to prevent overfitting and improve generalization">
-                <i class="fas fa-brain purple"></i> 
-                <span>Machine Learning</span>
-                <div class="skill-progress-container">
-                    <div class="skill-progress-percent">80%</div>
-                    <div class="skill-progress-bar">
-                        <div class="skill-progress-fill" data-target-width="80%"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card" data-type="skill" data-title="Data Analytics" data-percent="85" data-subskills="Exploratory Data Analysis,Pandas &amp; NumPy,Matplotlib &amp; Seaborn,SQL Queries" data-icon="fas fa-database green" data-details="Adept at translating raw, messy datasets into structured tables, interactive dashboards, and actionable business intelligence. Specialized in exploratory data analysis (EDA), pattern recognition, and statistical testing (t-tests, ANOVA) to back business hypotheses with concrete data proofs." data-bullets="Manipulated and aggregated multi-gigabyte datasets using Pandas, NumPy, and Polars;Created visually compelling charts and distribution plots using Matplotlib, Seaborn, and Plotly;Wrote complex SQL queries involving window functions, CTEs, and index optimization for database retrieval;Formulated correlation matrices and hypothesis tests to identify key drivers of user engagement">
-                <i class="fas fa-database green"></i> 
-                <span>Data Analytics</span>
-                <div class="skill-progress-container">
-                    <div class="skill-progress-percent">85%</div>
-                    <div class="skill-progress-bar">
-                        <div class="skill-progress-fill" data-target-width="85%"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card" data-type="skill" data-title="HTML5 &amp; CSS3" data-percent="85" data-subskills="Responsive Layouts,Flexbox &amp; CSS Grid,Animations &amp; Transitions,Glassmorphism" data-icon="fab fa-html5 orange" data-details="Creating responsive, accessible, and fast-loading web interfaces. Expertise in responsive layouts using Flexbox and CSS Grid, and custom design systems. Passionate about glassmorphism, responsive micro-animations, and CSS variables for modular styling." data-bullets="Developed mobile-first responsive layouts with clean, semantic HTML5 structure for SEO;Designed custom visual themes with smooth cubic-bezier transitions and hover animations;Created high-tech glassmorphism effects with backdrop-filters and semi-transparent borders;Optimized stylesheet loading and asset compression for high PageSpeed scoring">
-                <i class="fab fa-html5 orange"></i> 
-                <span>HTML5 &amp; CSS3</span>
-                <div class="skill-progress-container">
-                    <div class="skill-progress-percent">85%</div>
-                    <div class="skill-progress-bar">
-                        <div class="skill-progress-fill" data-target-width="85%"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card" data-type="skill" data-title="Git / Version Control" data-percent="80" data-subskills="Branching &amp; Merging,Commit Workflows,GitHub Collaboration,Pull Requests" data-icon="fab fa-git-alt red" data-details="Proficient in collaborative development using Git and GitHub. Experienced with branching models (Git Flow), resolving merge conflicts, and maintaining clean commit histories. Familiar with Git hooks, pull request workflows, and repository management." data-bullets="Collaborated on multi-developer projects using feature branches, pull requests, and peer code reviews;Managed complex merge conflicts and rebasing strategies to maintain a clean git commit timeline;Automated linting and test runs using pre-commit hooks and GitHub Actions workflows;Configured custom repository settings, secrets, and environment variables for deployment keys">
-                <i class="fab fa-git-alt red"></i> 
-                <span>Git / Version Control</span>
-                <div class="skill-progress-container">
-                    <div class="skill-progress-percent">80%</div>
-                    <div class="skill-progress-bar">
-                        <div class="skill-progress-fill" data-target-width="80%"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card" data-type="skill" data-title="Data Structures" data-percent="75" data-subskills="Time/Space Complexity,Arrays &amp; Lists,Sorting Algorithms,Stacks &amp; Queues" data-icon="fas fa-code teal" data-details="Solid theoretical and practical understanding of fundamental computer science algorithms and data structures. Skilled in analyzing time and space complexity using Big-O notation, and optimizing algorithms for maximum efficiency and execution speed." data-bullets="Implemented and manipulated core structures: Linked Lists, Binary Trees, Heaps, and Hash Tables;Solved complex algorithmic problems utilizing Dynamic Programming, BFS, DFS, and recursion;Analyzed code blocks using Big-O notation to identify and optimize quadratic time bottlenecks;Implemented custom sorting and searching algorithms tailored to unique dataset constraints">
-                <i class="fas fa-code teal"></i> 
-                <span>Data Structures</span>
-                <div class="skill-progress-container">
-                    <div class="skill-progress-percent">75%</div>
-                    <div class="skill-progress-bar">
-                        <div class="skill-progress-fill" data-target-width="75%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CERTIFICATIONS SECTION -->
-    <section id="certifications" class="cert-section">
-        <h2 class="section-title">My <span class="highlight">Certifications</span></h2>
-        <div class="cert-grid">
-            <div class="cert-card" data-type="cert" data-title="Artificial Intelligence Foundations" data-subtitle="Issued by: HCL &amp; GUVI" data-image="CERTIFICATES/cert_guvi_ai.png" data-pdf="CERTIFICATES/HCL GUVI Certification AI.pdf" data-icon="fas fa-certificate" data-details="A specialized national initiative certification validating foundations in Artificial Intelligence, machine learning workflows, and cloud cognitive services." data-bullets="Programmed AI pipelines in Python;Learned key concepts of computer vision and natural language processing;Built simple prediction models on GUVI IDE;Supported by HCL engineering mentors">
-                <div class="cert-image-wrapper">
-                    <img src="CERTIFICATES/cert_guvi_ai.png" alt="HCL GUVI AI Certification">
-                </div>
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Artificial Intelligence Foundations</h3>
-                <p>Issued by: HCL &amp; GUVI (AI.pdf)</p>
-            </div>
-            <div class="cert-card" data-type="cert" data-title="Technical Training Certification" data-subtitle="Issued by: HCL &amp; GUVI" data-image="CERTIFICATES/cert_guvi_tech.png" data-pdf="CERTIFICATES/HCL GUVI Certification - 6hDbBZT68177G74280 (1) (1).pdf" data-icon="fas fa-certificate" data-details="Technical training course focused on core software engineering practices, programming design patterns, and structured data handling." data-bullets="Developed algorithmic problem-solving skills;Mastered data structures implementation;Verified software development practices;Completed hands-on projects">
-                <div class="cert-image-wrapper">
-                    <img src="CERTIFICATES/cert_guvi_tech.png" alt="HCL GUVI Technical Certification">
-                </div>
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Data Science &amp; Analytics Core</h3>
-                <p>Issued by: HCL &amp; GUVI (GUVI.pdf)</p>
-            </div>
-            <div class="cert-card" data-type="cert" data-title="Python &amp; Data Science Specialization" data-subtitle="Issued by: Coursera / Partner University" data-image="CERTIFICATES/cert_coursera.png" data-pdf="CERTIFICATES/certificate-47uctx25fnoi-1781717276.pdf" data-icon="fas fa-certificate" data-details="Multi-course specialization detailing Python programming, data retrieval, and data visualization." data-bullets="Parsed web data using BeautifulSoup and JSON libraries;Wrote custom SQL scripts to manage sqlite databases;Handled data cleaning and visualization tasks;Completed capstone projects">
-                <div class="cert-image-wrapper">
-                    <img src="CERTIFICATES/cert_coursera.png" alt="Coursera Python Specialization">
-                </div>
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Python Programming Specialization</h3>
-                <p>Issued by: Coursera (certificate.pdf)</p>
-            </div>
-            <div class="cert-card" data-type="cert" data-title="Lead School Achievement Certification" data-subtitle="Issued by: Lead School" data-image="CERTIFICATES/cert_ls.png" data-pdf="CERTIFICATES/LS CERTIFICATE.pdf" data-icon="fas fa-certificate" data-details="Certification honoring excellence in soft skills, communication proficiency, and team coordination." data-bullets="Completed leadership workshops;Participated in team building exercises;Enhanced public speaking and presentation skills;Verified professional ethics">
-                <div class="cert-image-wrapper">
-                    <img src="CERTIFICATES/cert_ls.png" alt="Lead School Certificate">
-                </div>
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Lead School Achievement</h3>
-                <p>Issued by: Lead School (LS.pdf)</p>
-            </div>
-            <div class="cert-card" data-type="cert" data-title="Academic Excellence &amp; Department Honors" data-subtitle="Issued by: JNN Institute of Engineering" data-image="CERTIFICATES/cert_general.png" data-pdf="CERTIFICATES/CERTIFICATE.pdf" data-icon="fas fa-certificate" data-details="Awarded for maintaining high academic standards and actively contributing to institutional technical workshops and symposiums." data-bullets="Maintained strong academic GPA of 8.2;Participated in departmental technical symposia;Contributed to research project forums;Evaluated on hands-on practical labs">
-                <div class="cert-image-wrapper">
-                    <img src="CERTIFICATES/cert_general.png" alt="Academic Excellence Certificate">
-                </div>
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Academic &amp; Technical Achievement</h3>
-                <p>Issued by: JNN Institute (CERTIFICATE.pdf)</p>
-            </div>
-        </div>
-    </section>
+                    <!-- HTML5 & CSS3 -->
+                    <div class="skill-expanded-card">
+                        <div class="sec-top">
+                            <div class="sec-icon-wrap">
+                                <i class="fab fa-html5 orange sec-icon"></i>
+                            </div>
+                            <div class="sec-meta">
+                                <h3 class="sec-name">HTML5 &amp; CSS3</h3>
+                                <div class="sec-tags">
+                                    <span>Responsive Layouts</span>
+                                    <span>Flexbox &amp; CSS Grid</span>
+                                    <span>Animations &amp; Transitions</span>
+                                    <span>Glassmorphism</span>
+                                </div>
+                            </div>
+                            <div class="sec-percent-wrap">
+                                <div class="sec-pct-label">85%</div>
+                                <div class="sec-progress-bar">
+                                    <div class="skill-progress-fill" data-target-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sec-desc">Creating responsive, accessible, and fast-loading web interfaces. Expertise in responsive layouts using Flexbox and CSS Grid, and custom design systems. Passionate about glassmorphism, responsive micro-animations, and CSS variables for modular styling.</p>
+                        <ul class="sec-bullets">
+                            <li>Developed mobile-first responsive layouts with clean, semantic HTML5 structure for SEO</li>
+                            <li>Designed custom visual themes with smooth cubic-bezier transitions and hover animations</li>
+                            <li>Created high-tech glassmorphism effects with backdrop-filters and semi-transparent borders</li>
+                            <li>Optimized stylesheet loading and asset compression for high PageSpeed scoring</li>
+                        </ul>
+                    </div>
 
-    <!-- ACTIVITIES SECTION -->
-    <section id="activities" class="activities-section">
-        <h2 class="section-title">Other <span class="highlight">Activities</span></h2>
-        <div class="activities-container">
-            <div class="activity-box" data-type="activity" data-title="Creative Animation &amp; Design" data-icon="fas fa-gamepad" data-details="Passionate about combining scientific backend structures with visually striking front-end assets. Skilled in designing visual aids, custom themes, and rendering interactive canvases. Exploring WebGL interfaces and video production suites to create engaging tech stories." data-bullets="Designed brand assets, vector graphics, and promotional posters for college tech symposiums;Figma prototyping for clean user flows, wireframes, and sci-fi aesthetic interface mockups;Rendered 3D objects, logo animations, and tech teasers inside After Effects and Premiere Pro;Developed interactive 2D Canvas systems and started experimenting with Three.js WebGL scenes">
-                <h3><i class="fas fa-gamepad"></i> Creative Animation &amp; Design</h3>
-                <p>Interested in editing, rendering interactive elements, and mixing technical logic with visual design storytelling.</p>
-            </div>
-            <div class="activity-box" data-type="activity" data-title="Tech Community &amp; Hackathons" data-icon="fas fa-users" data-details="Active leader and participant in engineering communities. Committed to collaborating with peers in high-pressure hackathons, organizing tech events, and mentoring junior students in programming fundamentals." data-bullets="Led a 3-member team to build a smart-campus IoT prototype during a 24-hour regional hackathon;Participated in competitive programming contests on HackerRank and LeetCode representing JNN;Organized weekly peer study groups covering Python programming and Machine Learning foundations;Volunteered as a student coordinator for the annual Department of Computer Science Symposium">
-                <h3><i class="fas fa-users"></i> Tech Community &amp; Hackathons</h3>
-                <p>Enthusiastic participant in college technical symposiums, coding sprints, and collaborative peer learning circles.</p>
-            </div>
-            <div class="activity-box" data-type="activity" data-title="AI Research &amp; Open Source Projects" data-icon="fas fa-brain" data-details="Dedicated to tracking the frontier of Artificial Intelligence and deep learning. Actively experimenting with local neural network configurations, contributing documentation edits to open-source libraries, and documenting learning milestones." data-bullets="Developed and published toy AI scripts, neural network tests, and custom utility scripts on GitHub;Maintained exhaustive technical documentation, markdown READMEs, and wiki guides for project portfolios;Contributed documentation patches and code fixes to open-source repositories;Follows latest research from top venues (arXiv, NeurIPS) on LLMs, transformers, and model tuning">
-                <h3><i class="fas fa-brain"></i> AI Research &amp; Open Source</h3>
-                <p>Fascinated by neural networks, model optimization, and committing clean documentation / bug-fixes to open source code bases.</p>
-            </div>
-        </div>
-    </section>
+                    <!-- Git -->
+                    <div class="skill-expanded-card">
+                        <div class="sec-top">
+                            <div class="sec-icon-wrap">
+                                <i class="fab fa-git-alt red sec-icon"></i>
+                            </div>
+                            <div class="sec-meta">
+                                <h3 class="sec-name">Git / Version Control</h3>
+                                <div class="sec-tags">
+                                    <span>Branching &amp; Merging</span>
+                                    <span>Commit Workflows</span>
+                                    <span>GitHub Collaboration</span>
+                                    <span>Pull Requests</span>
+                                </div>
+                            </div>
+                            <div class="sec-percent-wrap">
+                                <div class="sec-pct-label">80%</div>
+                                <div class="sec-progress-bar">
+                                    <div class="skill-progress-fill" data-target-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sec-desc">Proficient in collaborative development using Git and GitHub. Experienced with branching models (Git Flow), resolving merge conflicts, and maintaining clean commit histories. Familiar with Git hooks, pull request workflows, and repository management best practices.</p>
+                        <ul class="sec-bullets">
+                            <li>Collaborated on multi-developer projects using feature branches, pull requests, and peer code reviews</li>
+                            <li>Managed complex merge conflicts and rebasing strategies to maintain a clean git commit timeline</li>
+                            <li>Automated linting and test runs using pre-commit hooks and GitHub Actions workflows</li>
+                            <li>Configured custom repository settings, secrets, and environment variables for deployment keys</li>
+                        </ul>
+                    </div>
 
-    <!-- Holographic Detail Modal -->
+                    <!-- Data Structures -->
+                    <div class="skill-expanded-card">
+                        <div class="sec-top">
+                            <div class="sec-icon-wrap">
+                                <i class="fas fa-code teal sec-icon"></i>
+                            </div>
+                            <div class="sec-meta">
+                                <h3 class="sec-name">Data Structures &amp; Algorithms</h3>
+                                <div class="sec-tags">
+                                    <span>Time/Space Complexity</span>
+                                    <span>Arrays &amp; Lists</span>
+                                    <span>Sorting Algorithms</span>
+                                    <span>Stacks &amp; Queues</span>
+                                </div>
+                            </div>
+                            <div class="sec-percent-wrap">
+                                <div class="sec-pct-label">75%</div>
+                                <div class="sec-progress-bar">
+                                    <div class="skill-progress-fill" data-target-width="75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sec-desc">Solid theoretical and practical understanding of fundamental computer science algorithms and data structures. Skilled in analyzing time and space complexity using Big-O notation, and optimizing algorithms for maximum efficiency and execution speed.</p>
+                        <ul class="sec-bullets">
+                            <li>Implemented and manipulated core structures: Linked Lists, Binary Trees, Heaps, and Hash Tables</li>
+                            <li>Solved complex algorithmic problems utilizing Dynamic Programming, BFS, DFS, and recursion</li>
+                            <li>Analyzed code blocks using Big-O notation to identify and optimize quadratic time bottlenecks</li>
+                            <li>Implemented custom sorting and searching algorithms tailored to unique dataset constraints</li>
+                        </ul>
+                    </div>
+
+                </div><!-- /skills-expanded-grid -->
+            </section>
+        </div><!-- /page-skills -->
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE 3 — CERTIFICATIONS DETAIL
+             Full cert cards with image overlay + bullets + PDF
+        ═══════════════════════════════════════════ -->
+        <div class="page" id="page-certs">
+            <section class="detail-page-section">
+
+                <div class="detail-page-header">
+                    <button class="back-btn" data-page="home">
+                        <i class="fas fa-chevron-left"></i> BACK
+                    </button>
+                    <div class="detail-title-block">
+                        <h2 class="section-title no-margin">My <span class="highlight">Certifications</span></h2>
+                        <p class="detail-subtitle">CERT_DATABASE :: 5 Verified Credentials</p>
+                    </div>
+                </div>
+
+                <div class="cert-detail-grid">
+
+                    <!-- AI Foundations -->
+                    <div class="cert-detail-card">
+                        <div class="cdc-image-wrap">
+                            <img src="CERTIFICATES/cert_guvi_ai.png" alt="HCL GUVI AI Certification">
+                            <div class="cdc-image-overlay">
+                                <a href="CERTIFICATES/HCL GUVI Certification AI.pdf" target="_blank" class="cdc-view-btn">
+                                    <i class="fas fa-external-link-alt"></i> VIEW PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cdc-content">
+                            <div class="cdc-header">
+                                <i class="fas fa-certificate cdc-icon"></i>
+                                <div>
+                                    <h3>Artificial Intelligence Foundations</h3>
+                                    <p class="cdc-issuer">Issued by: HCL &amp; GUVI</p>
+                                </div>
+                            </div>
+                            <p class="cdc-desc">A specialized national initiative certification validating foundations in Artificial Intelligence, machine learning workflows, and cloud cognitive services.</p>
+                            <ul class="cdc-bullets">
+                                <li>Programmed AI pipelines in Python</li>
+                                <li>Learned key concepts of computer vision and natural language processing</li>
+                                <li>Built simple prediction models on GUVI IDE</li>
+                                <li>Supported by HCL engineering mentors</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tech Training -->
+                    <div class="cert-detail-card">
+                        <div class="cdc-image-wrap">
+                            <img src="CERTIFICATES/cert_guvi_tech.png" alt="HCL GUVI Technical Certification">
+                            <div class="cdc-image-overlay">
+                                <a href="CERTIFICATES/HCL GUVI Certification - 6hDbBZT68177G74280 (1) (1).pdf" target="_blank" class="cdc-view-btn">
+                                    <i class="fas fa-external-link-alt"></i> VIEW PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cdc-content">
+                            <div class="cdc-header">
+                                <i class="fas fa-certificate cdc-icon"></i>
+                                <div>
+                                    <h3>Data Science &amp; Analytics Core</h3>
+                                    <p class="cdc-issuer">Issued by: HCL &amp; GUVI</p>
+                                </div>
+                            </div>
+                            <p class="cdc-desc">Technical training course focused on core software engineering practices, programming design patterns, and structured data handling.</p>
+                            <ul class="cdc-bullets">
+                                <li>Developed algorithmic problem-solving skills</li>
+                                <li>Mastered data structures implementation</li>
+                                <li>Verified software development practices</li>
+                                <li>Completed hands-on projects</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Coursera -->
+                    <div class="cert-detail-card">
+                        <div class="cdc-image-wrap">
+                            <img src="CERTIFICATES/cert_coursera.png" alt="Coursera Python Specialization">
+                            <div class="cdc-image-overlay">
+                                <a href="CERTIFICATES/certificate-47uctx25fnoi-1781717276.pdf" target="_blank" class="cdc-view-btn">
+                                    <i class="fas fa-external-link-alt"></i> VIEW PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cdc-content">
+                            <div class="cdc-header">
+                                <i class="fas fa-certificate cdc-icon"></i>
+                                <div>
+                                    <h3>Python Programming Specialization</h3>
+                                    <p class="cdc-issuer">Issued by: Coursera</p>
+                                </div>
+                            </div>
+                            <p class="cdc-desc">Multi-course specialization detailing Python programming, data retrieval, and data visualization for real-world data science workflows.</p>
+                            <ul class="cdc-bullets">
+                                <li>Parsed web data using BeautifulSoup and JSON libraries</li>
+                                <li>Wrote custom SQL scripts to manage SQLite databases</li>
+                                <li>Handled data cleaning and visualization tasks</li>
+                                <li>Completed capstone projects</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Lead School -->
+                    <div class="cert-detail-card">
+                        <div class="cdc-image-wrap">
+                            <img src="CERTIFICATES/cert_ls.png" alt="Lead School Certificate">
+                            <div class="cdc-image-overlay">
+                                <a href="CERTIFICATES/LS CERTIFICATE.pdf" target="_blank" class="cdc-view-btn">
+                                    <i class="fas fa-external-link-alt"></i> VIEW PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cdc-content">
+                            <div class="cdc-header">
+                                <i class="fas fa-certificate cdc-icon"></i>
+                                <div>
+                                    <h3>Lead School Achievement</h3>
+                                    <p class="cdc-issuer">Issued by: Lead School</p>
+                                </div>
+                            </div>
+                            <p class="cdc-desc">Certification honoring excellence in soft skills, communication proficiency, and team coordination in academic environments.</p>
+                            <ul class="cdc-bullets">
+                                <li>Completed leadership workshops</li>
+                                <li>Participated in team building exercises</li>
+                                <li>Enhanced public speaking and presentation skills</li>
+                                <li>Verified professional ethics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- JNN -->
+                    <div class="cert-detail-card">
+                        <div class="cdc-image-wrap">
+                            <img src="CERTIFICATES/cert_general.png" alt="Academic Excellence Certificate">
+                            <div class="cdc-image-overlay">
+                                <a href="CERTIFICATES/CERTIFICATE.pdf" target="_blank" class="cdc-view-btn">
+                                    <i class="fas fa-external-link-alt"></i> VIEW PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cdc-content">
+                            <div class="cdc-header">
+                                <i class="fas fa-certificate cdc-icon"></i>
+                                <div>
+                                    <h3>Academic &amp; Technical Achievement</h3>
+                                    <p class="cdc-issuer">Issued by: JNN Institute of Engineering</p>
+                                </div>
+                            </div>
+                            <p class="cdc-desc">Awarded for maintaining high academic standards and actively contributing to institutional technical workshops and symposiums throughout the year.</p>
+                            <ul class="cdc-bullets">
+                                <li>Maintained strong academic GPA of 8.2</li>
+                                <li>Participated in departmental technical symposia</li>
+                                <li>Contributed to research project forums</li>
+                                <li>Evaluated on hands-on practical labs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div><!-- /cert-detail-grid -->
+            </section>
+        </div><!-- /page-certs -->
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE 4 — ACTIVITIES DETAIL
+             9 terminal-style horizontal bars
+        ═══════════════════════════════════════════ -->
+        <div class="page" id="page-activities">
+            <section class="detail-page-section">
+
+                <div class="detail-page-header">
+                    <button class="back-btn" data-page="home">
+                        <i class="fas fa-chevron-left"></i> BACK
+                    </button>
+                    <div class="detail-title-block">
+                        <h2 class="section-title no-margin">Activities &amp; <span class="highlight">Interests</span></h2>
+                        <p class="detail-subtitle">ACTIVITY_LOG :: 9 Protocols Active</p>
+                    </div>
+                </div>
+
+                <!-- Terminal prompt line -->
+                <div class="terminal-prompt-line">
+                    <span class="tp-user">root@hemnath</span><span class="tp-sep">:</span><span class="tp-path">~/activities</span><span class="tp-dollar">$</span><span class="tp-cmd"> ls -la --format=detailed</span><span class="tp-cursor">█</span>
+                </div>
+
+                <div class="activity-bars-container">
+
+                    <!-- 1: Creative Animation & Design (original) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="Creative Animation &amp; Design"
+                        data-icon="fas fa-gamepad"
+                        data-details="Passionate about combining scientific backend structures with visually striking front-end assets. Skilled in designing visual aids, custom themes, and rendering interactive canvases. Exploring WebGL interfaces and video production suites to create engaging tech stories."
+                        data-bullets="Designed brand assets, vector graphics, and promotional posters for college tech symposiums;Figma prototyping for clean user flows, wireframes, and sci-fi aesthetic interface mockups;Rendered 3D objects, logo animations, and tech teasers inside After Effects and Premiere Pro;Developed interactive 2D Canvas systems and started experimenting with Three.js WebGL scenes">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-gamepad"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">MOTION_DESIGNER</span>
+                                <span class="abar-tag">CREATIVE</span>
+                            </div>
+                            <p class="abar-desc">Blending technical logic with visual storytelling through animation, Figma, and WebGL scenes.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 2: Tech Community & Hackathons (original) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="Tech Community &amp; Hackathons"
+                        data-icon="fas fa-users"
+                        data-details="Active leader and participant in engineering communities. Committed to collaborating with peers in high-pressure hackathons, organizing tech events, and mentoring junior students in programming fundamentals."
+                        data-bullets="Led a 3-member team to build a smart-campus IoT prototype during a 24-hour regional hackathon;Participated in competitive programming contests on HackerRank and LeetCode representing JNN;Organized weekly peer study groups covering Python programming and Machine Learning foundations;Volunteered as a student coordinator for the annual Department of Computer Science Symposium">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-users"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">HACKATHON_BUILDER</span>
+                                <span class="abar-tag">COMMUNITY</span>
+                            </div>
+                            <p class="abar-desc">Leading teams in 24-hr builds, organizing coding events, competing on HackerRank &amp; LeetCode.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 3: AI Research & Open Source (original) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="AI Research &amp; Open Source Projects"
+                        data-icon="fas fa-brain"
+                        data-details="Dedicated to tracking the frontier of Artificial Intelligence and deep learning. Actively experimenting with local neural network configurations, contributing documentation edits to open-source libraries, and documenting learning milestones."
+                        data-bullets="Developed and published toy AI scripts, neural network tests, and custom utility scripts on GitHub;Maintained exhaustive technical documentation, markdown READMEs, and wiki guides for project portfolios;Contributed documentation patches and code fixes to open-source repositories;Follows latest research from top venues (arXiv, NeurIPS) on LLMs, transformers, and model tuning">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-brain"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">AI_RESEARCHER</span>
+                                <span class="abar-tag">RESEARCH</span>
+                            </div>
+                            <p class="abar-desc">Tracking AI frontiers from arXiv to NeurIPS — publishing experiments and scripts on GitHub.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 4: AI Tools Explorer (new) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="AI Tools Explorer"
+                        data-icon="fas fa-robot"
+                        data-details="Always on the cutting edge of agentic AI development tools. Constantly exploring and evaluating new IDEs and platforms like Bolt.new, Lovable, Cursor, and Claude Code to understand their capabilities and integrate the best workflows into daily development."
+                        data-bullets="Daily exploration of Bolt.new for rapid full-stack AI prototyping;Using Lovable for no-code to low-code AI app generation experiments;Cursor AI for intelligent code completion and pair programming sessions;Claude Code and Antigravity IDE for agentic multi-file coding tasks">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-robot"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">AI_TOOLS_EXPLORER</span>
+                                <span class="abar-tag">TECH</span>
+                            </div>
+                            <p class="abar-desc">Pushing limits with Bolt.new, Lovable, Cursor, and Claude Code — always on the edge.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 5: Prototype Builder (new) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="Prototype Builder"
+                        data-icon="fas fa-hammer"
+                        data-details="Driven by the desire to turn ideas into reality with minimal friction. No product spec, no roadmap — just a raw concept and a keyboard. Specializes in going from zero to working prototype overnight, using whatever tools are fastest for the job."
+                        data-bullets="Built a full-stack web app from scratch in under 24 hours for a hackathon submission;Converted a napkin-sketch AI idea into a working Flask + ML model pipeline in one evening;Rapid prototyping using HTML/CSS/JS and Python backends without any framework overhead;Iterates fast, ships rough, refines based on feedback — minimum viable, maximum learning">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-hammer"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">PROTOTYPE_BUILDER</span>
+                                <span class="abar-tag">BUILD</span>
+                            </div>
+                            <p class="abar-desc">Turning raw concepts into working apps overnight — no roadmap, just execution.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 6: Code + Music (new) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="Code + Music Mode"
+                        data-icon="fas fa-headphones"
+                        data-details="Music is an essential part of the coding workflow. Lo-fi hip hop, synthwave, and ambient electronic music create the perfect environment for deep focus, flow state, and long coding sessions. The right playlist can make a 3-hour debug session feel like 30 minutes."
+                        data-bullets="Curated playlists for different coding modes: problem-solving, writing, and debugging;Lo-fi beats for frontend styling and UI work — calm, repetitive, rhythmic;Synthwave and retrowave for backend logic and algorithm challenges;Ambient electronic for documentation writing and research reading">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-headphones"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">CODE_PLUS_MUSIC</span>
+                                <span class="abar-tag">FOCUS</span>
+                            </div>
+                            <p class="abar-desc">Lo-fi and synthwave fuel every deep work session — music equals instant flow state.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 7: World Explorer (new) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="World Explorer"
+                        data-icon="fas fa-globe"
+                        data-details="Traveling and exploring new environments is a core source of creativity and inspiration. Changing scenery resets the mind, breaks routine thinking patterns, and consistently generates fresh ideas for projects and designs. New places equal new perspectives."
+                        data-bullets="Visits new towns and local spots frequently to break routine and spark ideas;Observes architecture, patterns, and culture as design inspiration for UI/UX work;Uses travel time for listening to tech podcasts and planning project ideas;Documents observations and insights in a personal digital notebook for later reference">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-globe"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">WORLD_EXPLORER</span>
+                                <span class="abar-tag">LIFE</span>
+                            </div>
+                            <p class="abar-desc">New places spark fresh ideas — travel resets the mind and fuels pure creativity.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 8: Tech Edge Surfer (new) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="Tech Edge Surfer"
+                        data-icon="fas fa-satellite-dish"
+                        data-details="Compelled to be at the bleeding edge of technology. Whether it's a newly released framework, an experimental AI model, or an alpha-stage development tool — the goal is to experiment first, understand second, and teach others third."
+                        data-bullets="Tracks Product Hunt, HuggingFace, and GitHub Trending daily for new releases;First in peer group to test Gemini, Claude, and GPT-4 API integrations;Experiments with newly released Python libraries and reports findings to study group;Maintains a personal changelog of tools tested and their real-world utility ratings">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-satellite-dish"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">TECH_EDGE_SURFER</span>
+                                <span class="abar-tag">EDGE</span>
+                            </div>
+                            <p class="abar-desc">First to experiment with bleeding-edge tools, frameworks, and workflows — always.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                    <!-- 9: Curiosity Driven Builder (new) -->
+                    <div class="activity-bar"
+                        data-type="activity"
+                        data-title="Curiosity Driven Builder"
+                        data-icon="fas fa-flask"
+                        data-details="The most powerful motivation is pure curiosity. Side projects aren't built for deadlines, grades, or job requirements — they're built because the question 'can I build this?' is too compelling to ignore. These projects are where the deepest learning happens."
+                        data-bullets="Built a personal expense tracker with Flask + SQLite just to see if it could be done in a weekend;Created a custom terminal-style portfolio from scratch as a design and engineering challenge;Wrote a custom Python web scraper for tracking product prices — no tutorial, pure figuring it out;Maintains a 'build ideas' notebook with 20+ concepts waiting to be explored">
+                        <div class="abar-left">
+                            <div class="abar-icon-wrap"><i class="fas fa-flask"></i></div>
+                        </div>
+                        <div class="abar-body">
+                            <div class="abar-title-row">
+                                <span class="abar-prefix">&gt;</span>
+                                <span class="abar-title">CURIOSITY_DRIVEN</span>
+                                <span class="abar-tag">HACK</span>
+                            </div>
+                            <p class="abar-desc">Side projects born from "can I build this?" — curiosity always beats deadlines.</p>
+                        </div>
+                        <div class="abar-right"><i class="fas fa-chevron-right abar-arrow"></i></div>
+                    </div>
+
+                </div><!-- /activity-bars-container -->
+            </section>
+        </div><!-- /page-activities -->
+
+    </div><!-- /page-container -->
+
+
+    <!-- ── Holographic Detail Modal ── -->
     <div id="detail-modal" class="holo-modal">
         <div class="holo-modal-container">
             <div class="frame-corner"></div>
             <div class="frame-corner"></div>
             <div class="frame-corner"></div>
             <div class="frame-corner"></div>
-            
+
             <button id="modal-close" class="holo-modal-close">CLOSE::SYSTEM</button>
-            
+
             <div class="holo-modal-header">
                 <i id="modal-icon" class="fas fa-info-circle"></i>
                 <div>
@@ -248,14 +930,14 @@
                     <div id="modal-subtitle" class="holo-modal-subtitle">Sub-info</div>
                 </div>
             </div>
-            
+
             <div class="holo-modal-body">
                 <div id="modal-image-container" style="display: none;">
                     <img id="modal-image" class="modal-detail-img" src="" alt="Detail Image">
                 </div>
-                
+
                 <p id="modal-description">Detailed description will load here.</p>
-                
+
                 <div id="modal-progress-container" class="modal-progress-wrapper" style="display: none;">
                     <div class="modal-progress-label">
                         <span>PROFICIENCY</span>
@@ -270,10 +952,10 @@
                     <h4 style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; margin-bottom: 8px; color: var(--text-bright); letter-spacing: 1px;">KEY FOCUS AREAS:</h4>
                     <div id="modal-subskills" class="modal-subskills"></div>
                 </div>
-                
+
                 <ul id="modal-bullets" class="holo-modal-bullets"></ul>
             </div>
-            
+
             <div class="holo-modal-footer">
                 <a id="modal-action-btn" class="holo-modal-btn" href="#" target="_blank">
                     <i class="fas fa-external-link-alt"></i> VIEW FULL DOCUMENT
@@ -282,12 +964,9 @@
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Hemnath. Built with code via Antigravity IDE.</p>
-    </footer>
-
     <script src="holo-effects.js"></script>
     <script src="3d-motion.js"></script>
+    <script src="page-router.js"></script>
 </body>
 
 </html>
