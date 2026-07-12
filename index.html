@@ -20,6 +20,22 @@
     <!-- Holographic Particle Canvas -->
     <canvas id="holo-particles"></canvas>
 
+    <!-- Game HUD Overlay -->
+    <div class="game-hud">
+        <div class="hud-title">SYSTEM::ORBITAL_DEFENDER</div>
+        <div class="hud-row">
+            <div class="hud-item">
+                <span class="hud-label">SCORE</span>
+                <span id="hud-score" class="hud-value">0000</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">COMETS</span>
+                <span id="hud-comets" class="hud-value">0</span>
+            </div>
+        </div>
+        <div class="hud-status" id="hud-status">SYS_STATUS: ONLINE</div>
+    </div>
+
     <!-- Data Stream Background -->
     <div class="data-stream-bg"></div>
 
@@ -86,7 +102,7 @@
     <section id="skills" class="skills-section">
         <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
         <div class="skills-grid">
-            <div class="skill-card" data-type="skill" data-title="Python" data-percent="90" data-subskills="Scripting &amp; Automation,Data Manipulation,Web Scraping,API Integration" data-icon="fab fa-python blue" data-details="Extensive experience in writing clean, optimized Python code. Used regularly for backend scripting, scraping large web resources, automating repetitive tasks, and preprocessing data for machine learning models.">
+            <div class="skill-card" data-type="skill" data-title="Python" data-percent="90" data-subskills="Scripting &amp; Automation,Data Manipulation,Web Scraping,API Integration" data-icon="fab fa-python blue" data-details="Proficient in writing clean, PEP 8 compliant, and production-grade Python. Leveraged daily for building ETL data pipelines, processing large scientific datasets, writing automation scripts, and prototyping machine learning models. Adept in OOP principles, design patterns, and asynchronous programming in Python." data-bullets="Developed robust web scraping systems with BeautifulSoup and Selenium to extract unstructured data;Built REST APIs using Flask and FastAPI to serve predictive machine learning models;Automated daily data backup and migration tasks for cloud environments;Optimized computational bottlenecks in numerical scripts using vectorized NumPy operations">
                 <i class="fab fa-python blue"></i> 
                 <span>Python</span>
                 <div class="skill-progress-container">
@@ -96,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="skill-card" data-type="skill" data-title="Machine Learning" data-percent="80" data-subskills="Supervised Learning,Unsupervised Learning,Model Tuning,Scikit-learn" data-icon="fas fa-brain purple" data-details="Proficient in building predictive models using classification, regression, and clustering algorithms. Experienced in feature engineering, cross-validation, and model evaluation techniques.">
+            <div class="skill-card" data-type="skill" data-title="Machine Learning" data-percent="80" data-subskills="Supervised Learning,Unsupervised Learning,Model Tuning,Scikit-learn" data-icon="fas fa-brain purple" data-details="Strong grasp of supervised and unsupervised learning algorithms, statistical modeling, and model evaluation metrics. Skilled in feature engineering, hyperparameter tuning (GridSearch, Optuna), and handling data imbalances. Experienced in applying ML to solve regression, classification, and clustering problems." data-bullets="Trained and evaluated complex models like XGBoost, Random Forests, and Support Vector Machines;Implemented custom preprocessing pipelines using Scikit-Learn for normalization, encoding, and imputation;Utilized Principal Component Analysis (PCA) for dimensionality reduction of high-dimensional datasets;Conducted rigorous cross-validation and error analysis to prevent overfitting and improve generalization">
                 <i class="fas fa-brain purple"></i> 
                 <span>Machine Learning</span>
                 <div class="skill-progress-container">
@@ -106,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="skill-card" data-type="skill" data-title="Data Analytics" data-percent="85" data-subskills="Exploratory Data Analysis,Pandas &amp; NumPy,Matplotlib &amp; Seaborn,SQL Queries" data-icon="fas fa-database green" data-details="Skilled in parsing raw datasets, conducting statistics, generating interactive visualizations, and uncovering actionable trends from complex business data.">
+            <div class="skill-card" data-type="skill" data-title="Data Analytics" data-percent="85" data-subskills="Exploratory Data Analysis,Pandas &amp; NumPy,Matplotlib &amp; Seaborn,SQL Queries" data-icon="fas fa-database green" data-details="Adept at translating raw, messy datasets into structured tables, interactive dashboards, and actionable business intelligence. Specialized in exploratory data analysis (EDA), pattern recognition, and statistical testing (t-tests, ANOVA) to back business hypotheses with concrete data proofs." data-bullets="Manipulated and aggregated multi-gigabyte datasets using Pandas, NumPy, and Polars;Created visually compelling charts and distribution plots using Matplotlib, Seaborn, and Plotly;Wrote complex SQL queries involving window functions, CTEs, and index optimization for database retrieval;Formulated correlation matrices and hypothesis tests to identify key drivers of user engagement">
                 <i class="fas fa-database green"></i> 
                 <span>Data Analytics</span>
                 <div class="skill-progress-container">
@@ -116,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div class="skill-card" data-type="skill" data-title="HTML5 &amp; CSS3" data-percent="85" data-subskills="Responsive Layouts,Flexbox &amp; CSS Grid,Animations &amp; Transitions,Glassmorphism" data-icon="fab fa-html5 orange" data-details="Designing modern web interfaces that are both aesthetically stunning and responsive, adhering to clean semantics, search engine optimization, and smooth interactive micro-animations.">
+            <div class="skill-card" data-type="skill" data-title="HTML5 &amp; CSS3" data-percent="85" data-subskills="Responsive Layouts,Flexbox &amp; CSS Grid,Animations &amp; Transitions,Glassmorphism" data-icon="fab fa-html5 orange" data-details="Creating responsive, accessible, and fast-loading web interfaces. Expertise in responsive layouts using Flexbox and CSS Grid, and custom design systems. Passionate about glassmorphism, responsive micro-animations, and CSS variables for modular styling." data-bullets="Developed mobile-first responsive layouts with clean, semantic HTML5 structure for SEO;Designed custom visual themes with smooth cubic-bezier transitions and hover animations;Created high-tech glassmorphism effects with backdrop-filters and semi-transparent borders;Optimized stylesheet loading and asset compression for high PageSpeed scoring">
                 <i class="fab fa-html5 orange"></i> 
                 <span>HTML5 &amp; CSS3</span>
                 <div class="skill-progress-container">
@@ -126,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="skill-card" data-type="skill" data-title="Git / Version Control" data-percent="80" data-subskills="Branching &amp; Merging,Commit Workflows,GitHub Collaboration,Pull Requests" data-icon="fab fa-git-alt red" data-details="Confident in git commands for local versioning and collaborating on remote repositories via GitHub. Experienced in maintaining clean commit histories and managing team workflows.">
+            <div class="skill-card" data-type="skill" data-title="Git / Version Control" data-percent="80" data-subskills="Branching &amp; Merging,Commit Workflows,GitHub Collaboration,Pull Requests" data-icon="fab fa-git-alt red" data-details="Proficient in collaborative development using Git and GitHub. Experienced with branching models (Git Flow), resolving merge conflicts, and maintaining clean commit histories. Familiar with Git hooks, pull request workflows, and repository management." data-bullets="Collaborated on multi-developer projects using feature branches, pull requests, and peer code reviews;Managed complex merge conflicts and rebasing strategies to maintain a clean git commit timeline;Automated linting and test runs using pre-commit hooks and GitHub Actions workflows;Configured custom repository settings, secrets, and environment variables for deployment keys">
                 <i class="fab fa-git-alt red"></i> 
                 <span>Git / Version Control</span>
                 <div class="skill-progress-container">
@@ -136,7 +152,7 @@
                     </div>
                 </div>
             </div>
-            <div class="skill-card" data-type="skill" data-title="Data Structures" data-percent="75" data-subskills="Time/Space Complexity,Arrays &amp; Lists,Sorting Algorithms,Stacks &amp; Queues" data-icon="fas fa-code teal" data-details="Strong theoretical and practical foundation in core data structures and algorithm analysis. Proficient in optimizing code block execution for speed and memory footprint.">
+            <div class="skill-card" data-type="skill" data-title="Data Structures" data-percent="75" data-subskills="Time/Space Complexity,Arrays &amp; Lists,Sorting Algorithms,Stacks &amp; Queues" data-icon="fas fa-code teal" data-details="Solid theoretical and practical understanding of fundamental computer science algorithms and data structures. Skilled in analyzing time and space complexity using Big-O notation, and optimizing algorithms for maximum efficiency and execution speed." data-bullets="Implemented and manipulated core structures: Linked Lists, Binary Trees, Heaps, and Hash Tables;Solved complex algorithmic problems utilizing Dynamic Programming, BFS, DFS, and recursion;Analyzed code blocks using Big-O notation to identify and optimize quadratic time bottlenecks;Implemented custom sorting and searching algorithms tailored to unique dataset constraints">
                 <i class="fas fa-code teal"></i> 
                 <span>Data Structures</span>
                 <div class="skill-progress-container">
@@ -200,15 +216,15 @@
     <section id="activities" class="activities-section">
         <h2 class="section-title">Other <span class="highlight">Activities</span></h2>
         <div class="activities-container">
-            <div class="activity-box" data-type="activity" data-title="Creative Animation &amp; Design" data-icon="fas fa-gamepad" data-details="Blending structural backend elements with visual front-end designs. Heavily interested in styling, 3D renderings, and graphic assets creation." data-bullets="Designed promotional brochures and posters for college tech symposiums;Familiar with UI/UX prototyping tools like Figma;Edits and color-grades video reels in Premiere Pro and After Effects;Explores Three.js for interactive WebGL experiences">
+            <div class="activity-box" data-type="activity" data-title="Creative Animation &amp; Design" data-icon="fas fa-gamepad" data-details="Passionate about combining scientific backend structures with visually striking front-end assets. Skilled in designing visual aids, custom themes, and rendering interactive canvases. Exploring WebGL interfaces and video production suites to create engaging tech stories." data-bullets="Designed brand assets, vector graphics, and promotional posters for college tech symposiums;Figma prototyping for clean user flows, wireframes, and sci-fi aesthetic interface mockups;Rendered 3D objects, logo animations, and tech teasers inside After Effects and Premiere Pro;Developed interactive 2D Canvas systems and started experimenting with Three.js WebGL scenes">
                 <h3><i class="fas fa-gamepad"></i> Creative Animation &amp; Design</h3>
                 <p>Interested in editing, rendering interactive elements, and mixing technical logic with visual design storytelling.</p>
             </div>
-            <div class="activity-box" data-type="activity" data-title="Tech Community &amp; Hackathons" data-icon="fas fa-users" data-details="An active student member within JNN Institute of Engineering's tech circles, participating in external and internal hackathons." data-bullets="Lead a 3-member team for a 24-hour smart campus hackathon;Participated in competitive programming challenges at regional colleges;Organizes peer study groups for Python and Machine Learning;Volunteer coordinator for JNN department symposium">
+            <div class="activity-box" data-type="activity" data-title="Tech Community &amp; Hackathons" data-icon="fas fa-users" data-details="Active leader and participant in engineering communities. Committed to collaborating with peers in high-pressure hackathons, organizing tech events, and mentoring junior students in programming fundamentals." data-bullets="Led a 3-member team to build a smart-campus IoT prototype during a 24-hour regional hackathon;Participated in competitive programming contests on HackerRank and LeetCode representing JNN;Organized weekly peer study groups covering Python programming and Machine Learning foundations;Volunteered as a student coordinator for the annual Department of Computer Science Symposium">
                 <h3><i class="fas fa-users"></i> Tech Community &amp; Hackathons</h3>
                 <p>Enthusiastic participant in college technical symposiums, coding sprints, and collaborative peer learning circles.</p>
             </div>
-            <div class="activity-box" data-type="activity" data-title="AI Research &amp; Open Source Projects" data-icon="fas fa-brain" data-details="Passionately investigating emerging deep learning architectures, building local model scripts, and contributing to codebase repositories." data-bullets="Built personal AI toy-projects and published them on GitHub;Regularly writes detailed documentation notes for personal coding projects;Contributes minor fixes to open-source coding repositories;Follows latest news on deep learning and NLP architectures">
+            <div class="activity-box" data-type="activity" data-title="AI Research &amp; Open Source Projects" data-icon="fas fa-brain" data-details="Dedicated to tracking the frontier of Artificial Intelligence and deep learning. Actively experimenting with local neural network configurations, contributing documentation edits to open-source libraries, and documenting learning milestones." data-bullets="Developed and published toy AI scripts, neural network tests, and custom utility scripts on GitHub;Maintained exhaustive technical documentation, markdown READMEs, and wiki guides for project portfolios;Contributed documentation patches and code fixes to open-source repositories;Follows latest research from top venues (arXiv, NeurIPS) on LLMs, transformers, and model tuning">
                 <h3><i class="fas fa-brain"></i> AI Research &amp; Open Source</h3>
                 <p>Fascinated by neural networks, model optimization, and committing clean documentation / bug-fixes to open source code bases.</p>
             </div>
@@ -271,6 +287,7 @@
     </footer>
 
     <script src="holo-effects.js"></script>
+    <script src="3d-motion.js"></script>
 </body>
 
 </html>

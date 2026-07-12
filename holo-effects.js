@@ -37,6 +37,21 @@
         const ctx = canvas.getContext('2d');
         let width, height;
         const particles = [];
+        const comets = [];
+        const explosions = [];
+        const maxComets = 3;
+
+        // Game score elements and tracking
+        const scoreEl = document.getElementById('hud-score');
+        const cometsEl = document.getElementById('hud-comets');
+        const statusEl = document.getElementById('hud-status');
+        let score = 0;
+        let cometsDestroyed = 0;
+
+        function updateHUD() {
+            if (scoreEl) scoreEl.textContent = String(score).padStart(4, '0');
+            if (cometsEl) cometsEl.textContent = String(cometsDestroyed);
+        }
 
         function resize() {
             width = canvas.width = window.innerWidth;
@@ -86,9 +101,168 @@
             });
         }
 
+        // Spawn a new diagonal comet
+        function spawnComet() {
+            if (comets.length >= maxComets) return;
+            const startFromLeft = Math.random() > 0.5;
+            let x, y, vx, vy;
+
+            if (startFromLeft) {
+                x = -50;
+                y = Math.random() * (height * 0.6);
+                vx = 1.8 + Math.random() * 2.2;
+                vy = 0.6 + Math.random() * 1.4;
+            } else {
+                x = width + 50;
+                y = Math.random() * (height * 0.6);
+                vx = -(1.8 + Math.random() * 2.2);
+                vy = 0.6 + Math.random() * 1.4;
+            }
+
+            comets.push({
+                x: x,
+                y: y,
+                vx: vx,
+                vy: vy,
+                size: 3.5 + Math.random() * 2.5,
+                color: 'rgba(0, 242, 254,', // Cyan/Teal core comet
+                tail: [],
+                maxTailLength: 22 + Math.floor(Math.random() * 12)
+            });
+        }
+
+        // Helper to spawn explosion sparks
+        function createExplosion(x, y, colorBase, count) {
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 1.2 + Math.random() * 4.5;
+                explosions.push({
+                    x: x,
+                    y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    size: 0.8 + Math.random() * 1.8,
+                    color: colorBase,
+                    alpha: 1.0,
+                    decay: 0.025 + Math.random() * 0.035
+                });
+            }
+        }
+
+        // Floating score texts
+        function createScorePopup(x, y, text) {
+            const popup = document.createElement('div');
+            popup.className = 'score-popup';
+            popup.style.left = x + 'px';
+            popup.style.top = y + 'px';
+            popup.textContent = text;
+            document.body.appendChild(popup);
+            setTimeout(() => {
+                popup.remove();
+            }, 800);
+        }
+
+        // Interactive mouse click game logic
+        document.addEventListener('click', (e) => {
+            // Ignore clicks on active elements like buttons, navs, modals, headers, etc.
+            if (e.target.closest('a, button, nav, .skill-card, .cert-card, .activity-box, .holo-modal, header, .game-hud')) {
+                return;
+            }
+
+            const clickX = e.clientX;
+            const clickY = e.clientY;
+            let hit = false;
+
+            // Check comet collisions (50 points, higher priority)
+            for (let i = comets.length - 1; i >= 0; i--) {
+                const c = comets[i];
+                const dx = clickX - c.x;
+                const dy = clickY - c.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 35) {
+                    createExplosion(c.x, c.y, c.color, 24);
+                    createScorePopup(clickX, clickY, '+50 COMET INTERCEPTED');
+                    comets.splice(i, 1);
+                    score += 50;
+                    cometsDestroyed += 1;
+                    hit = true;
+
+                    if (statusEl) {
+                        statusEl.textContent = 'SYS_MSG: COMET_INTERCEPTED';
+                        statusEl.style.color = 'var(--holo-pink)';
+                        setTimeout(() => {
+                            if (statusEl) {
+                                statusEl.textContent = 'SYS_STATUS: ONLINE';
+                                statusEl.style.color = 'var(--holo-teal)';
+                            }
+                        }, 1500);
+                    }
+                    break;
+                }
+            }
+
+            // Check star collisions (10 points, lower priority)
+            if (!hit) {
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    const dx = clickX - p.x;
+                    const dy = clickY - p.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 25) {
+                        createExplosion(p.x, p.y, p.color, 12);
+                        createScorePopup(clickX, clickY, '+10 STAR BURST');
+                        
+                        // Respawn star
+                        p.x = Math.random() * width;
+                        p.y = Math.random() * height;
+                        p.alpha = 0.2 + Math.random() * 0.6;
+                        p.size = CONFIG.particles.minSize + Math.random() * (CONFIG.particles.maxSize - CONFIG.particles.minSize);
+                        
+                        score += 10;
+                        hit = true;
+                        break;
+                    }
+                }
+            }
+
+            // Repulsive force shockwave pushing stars away from click pointer
+            for (const p of particles) {
+                const dx = p.x - clickX;
+                const dy = p.y - clickY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 160 && dist > 0) {
+                    const force = (160 - dist) / 160 * 6;
+                    const angle = Math.atan2(dy, dx);
+                    p.vx += Math.cos(angle) * force * 0.25;
+                    p.vy += Math.sin(angle) * force * 0.25;
+                }
+            }
+
+            for (const c of comets) {
+                const dx = c.x - clickX;
+                const dy = c.y - clickY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 160 && dist > 0) {
+                    const force = (160 - dist) / 160 * 5;
+                    const angle = Math.atan2(dy, dx);
+                    c.vx += Math.cos(angle) * force * 0.2;
+                    c.vy += Math.sin(angle) * force * 0.2;
+                }
+            }
+
+            updateHUD();
+        });
+
         function draw() {
             ctx.clearRect(0, 0, width, height);
             const time = Date.now() * 0.001;
+
+            // Spawn comets occasionally
+            if (Math.random() < 0.005) {
+                spawnComet();
+            }
 
             // Draw connections (constellations)
             for (let i = 0; i < particles.length; i++) {
@@ -109,11 +283,56 @@
                 }
             }
 
+            // Update and draw comets
+            for (let i = comets.length - 1; i >= 0; i--) {
+                const c = comets[i];
+                c.x += c.vx;
+                c.y += c.vy;
+
+                c.tail.push({ x: c.x, y: c.y });
+                if (c.tail.length > c.maxTailLength) {
+                    c.tail.shift();
+                }
+
+                if (c.x < -100 || c.x > width + 100 || c.y < -100 || c.y > height + 100) {
+                    comets.splice(i, 1);
+                    continue;
+                }
+
+                // Draw tail dust trail
+                for (let j = 0; j < c.tail.length; j++) {
+                    const pos = c.tail[j];
+                    const tailAlpha = (j / c.tail.length) * 0.22;
+                    const tailSize = c.size * (j / c.tail.length) * 1.5;
+
+                    ctx.beginPath();
+                    drawStar4(pos.x, pos.y, tailSize * 0.5, time * 2);
+                    ctx.fillStyle = `${c.color} ${tailAlpha})`;
+                    ctx.fill();
+                }
+
+                // Draw glowing comet head
+                const headAlpha = 0.85 + Math.sin(time * 25) * 0.15;
+                ctx.beginPath();
+                drawStar4(c.x, c.y, c.size * 3.5, time * 3.5);
+                ctx.fillStyle = `${c.color} ${headAlpha * 0.15})`;
+                ctx.fill();
+
+                ctx.beginPath();
+                drawStar4(c.x, c.y, c.size, time * 3.5);
+                ctx.fillStyle = `rgba(255, 255, 255, ${headAlpha})`; // Intense white center
+                ctx.fill();
+            }
+
             // Draw star particles
             for (const p of particles) {
                 // Update position
                 p.x += p.vx;
                 p.y += p.vy;
+
+                // Restrict velocity from accumulating indefinitely from shockwaves
+                p.vx *= 0.98;
+                p.vy *= 0.98;
                 
                 // Update rotation angle
                 p.angle += p.rotationSpeed;
@@ -137,6 +356,24 @@
                 ctx.beginPath();
                 drawStar4(p.x, p.y, p.size, p.angle);
                 ctx.fillStyle = `${p.color} ${pulseAlpha})`;
+                ctx.fill();
+            }
+
+            // Draw explosion sparks
+            for (let i = explosions.length - 1; i >= 0; i--) {
+                const e = explosions[i];
+                e.x += e.vx;
+                e.y += e.vy;
+                e.alpha -= e.decay;
+
+                if (e.alpha <= 0) {
+                    explosions.splice(i, 1);
+                    continue;
+                }
+
+                ctx.beginPath();
+                ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+                ctx.fillStyle = `${e.color} ${e.alpha})`;
                 ctx.fill();
             }
 
@@ -318,6 +555,7 @@
                 mSubtitle.textContent = 'Technical Skill';
                 const percent = card.getAttribute('data-percent');
                 const subskillsAttr = card.getAttribute('data-subskills');
+                const bulletsAttr = card.getAttribute('data-bullets');
 
                 // Skill progress bars
                 mProgressContainer.style.display = 'block';
@@ -338,6 +576,19 @@
                         badge.className = 'modal-subskill-badge';
                         badge.textContent = item.trim();
                         mSubskills.appendChild(badge);
+                    });
+                }
+
+                // Add bullets
+                if (bulletsAttr) {
+                    mBullets.style.display = 'block';
+                    const list = bulletsAttr.split(';');
+                    list.forEach((item) => {
+                        if (item.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = item.trim();
+                            mBullets.appendChild(li);
+                        }
                     });
                 }
             } else if (type === 'cert') {

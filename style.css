@@ -640,7 +640,9 @@ nav a.active::after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 25px;
-    perspective: 1000px;
+    perspective: 1200px;
+    perspective-origin: center center;
+    transform-style: preserve-3d;
 }
 
 .skill-card {
@@ -664,6 +666,8 @@ nav a.active::after {
     box-shadow: var(--glow-sm);
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 /* Stagger floating animation per card */
@@ -739,6 +743,8 @@ nav a.active::after {
     animation: holo-flicker 10s ease-in-out infinite;
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 /* Glowing left filament */
@@ -807,6 +813,8 @@ nav a.active::after {
     animation: float-drift 7s ease-in-out infinite, holo-flicker 10s ease-in-out infinite;
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 .activity-box:nth-child(2) {
@@ -1326,4 +1334,134 @@ footer::before {
     box-shadow: 0 0 10px var(--holo-cyan);
     border-radius: 4px;
     transition: width 1.2s ease-out;
+}
+
+/* ============================================================
+   INTERACTIVE GAME HUD & STYLING
+   ============================================================ */
+
+/* Custom crosshair cursor for the game canvas area */
+#holo-particles {
+    cursor: crosshair;
+}
+
+.game-hud {
+    position: fixed;
+    top: 90px;
+    right: 30px;
+    width: 260px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border-bright);
+    box-shadow: var(--glow-md);
+    padding: 12px 16px;
+    border-radius: 8px;
+    z-index: 999;
+    color: var(--text-bright);
+    font-family: 'Orbitron', sans-serif;
+    animation: holo-flicker 12s ease-in-out infinite;
+    pointer-events: auto; /* Allow HUD hover, but click events pass to body/canvas otherwise */
+    transition: all 0.3s ease;
+}
+
+.game-hud:hover {
+    box-shadow: var(--glow-lg);
+    border-color: rgba(0, 242, 254, 0.5);
+    background: var(--glass-bg-solid);
+}
+
+.hud-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--holo-cyan);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+    text-shadow: var(--text-glow);
+}
+
+.hud-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.hud-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.hud-value {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    text-shadow: var(--text-glow);
+}
+
+.hud-status {
+    font-size: 0.65rem;
+    color: var(--holo-teal);
+    letter-spacing: 1px;
+    margin-top: 8px;
+    text-align: right;
+    animation: text-glow-breathe 3s ease-in-out infinite;
+}
+
+/* Floating Click/Hit Point Popups */
+.score-popup {
+    position: fixed;
+    pointer-events: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--holo-cyan);
+    text-shadow: var(--text-glow-bright);
+    animation: popup-float-fade 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    z-index: 10000;
+}
+
+@keyframes popup-float-fade {
+    0% {
+        transform: translate(-50%, -50%) translateY(0) scale(0.6);
+        opacity: 0;
+    }
+    20% {
+        transform: translate(-50%, -50%) translateY(-10px) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(-40px) scale(0.9);
+        opacity: 0;
+    }
+}
+
+/* Make sure mobile responsive design handles HUD nicely */
+@media (max-width: 768px) {
+    .game-hud {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        width: calc(100% - 40px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+    }
+    .hud-title {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    .hud-status {
+        margin-top: 0;
+    }
 }
